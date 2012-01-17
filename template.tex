@@ -1,0 +1,31 @@
+\documentclass[12pt]{article}
+\usepackage[hmargin=1in, vmargin=1in]{geometry}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\usepackage{lastpage}
+\usepackage{url}
+
+\def\author{Your name here}
+\def\title{Title here}
+\def\date{\today}
+
+\fancyhf{} % clear all header and footer fields
+\fancyhead[LO]{\author}
+\fancyhead[CO]{\title}
+\fancyhead[RO]{\date}
+% The weird spacing here is to get the spacing of \thepage to be right.
+\fancyfoot[C]{\thepage\
+                    / \pageref{LastPage}}
+
+\setcounter{secnumdepth}{0}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{4mm}
+\linespread{1.4}
+
+\begin{document}
+
+asdfasdf
+% Just put plain text here
+% render with 'pdflatex <file.tex>'
+
+\end{document}

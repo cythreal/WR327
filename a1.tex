@@ -1,0 +1,37 @@
+\documentclass[12pt]{article}
+\usepackage[hmargin=1in, vmargin=1in]{geometry}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\usepackage{lastpage}
+\usepackage{url}
+
+\def\author{Jacques Uber}
+\def\title{Camping Headlamp}
+\def\date{\today}
+
+\fancyhf{} % clear all header and footer fields
+\fancyhead[LO]{\author}
+\fancyhead[CO]{\title}
+\fancyhead[RO]{\date}
+% The weird spacing here is to get the spacing of \thepage to be right.
+\fancyfoot[C]{\thepage\
+                    / \pageref{LastPage}}
+
+\setcounter{secnumdepth}{0}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{4mm}
+\linespread{1.4}
+
+\begin{document}
+My camping headlamp is a pocket sized light source designed for wearing around one's head during
+situations when visibility could be aided by a supplementary light source. The headlamp is made up
+of two parts: the lamp, and the strap.  The lamp is roughly 1/4 pounds when loaded with it's 3 AAA
+battery power source. The lamp has 6 main LED bulbs, 4 of the bulbs are white and the
+remaining 2 are red. The variable length strap is a maximum 2 feet long, and at it's minimum 1/2 foot long.
+
+% Just put plain text here
+% render with 'pdflatex <file.tex>'
+\section{Test section}
+something in section
+
+\end{document}
