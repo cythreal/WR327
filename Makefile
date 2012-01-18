@@ -1,7 +1,16 @@
 TEXFILE = "a1"
 a1:
-	latex $(TEXFILE).tex
-	rm $(TEXFILE).log
-	rm $(TEXFILE).aux
-	dvips $(TEXFILE).dvi -o $(TEXFILE).pdf
-	rm $(TEXFILE).dvi
+	pdflatex $(TEXFILE).tex
+	rm *.log
+	rm *.aux
+a1-view:
+	pdflatex $(TEXFILE).tex
+	rm *.log
+	rm *.aux
+	evince a1.pdf
+
+
+clean:
+	rm *.log
+	rm *.aux
+	rm *.dvi
