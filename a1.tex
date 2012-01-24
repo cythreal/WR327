@@ -2,13 +2,15 @@
 \usepackage[hmargin=1in, vmargin=1in]{geometry}
 \usepackage{fancyhdr}
 \pagestyle{fancy}
+\usepackage[small]{caption}
 \usepackage{lastpage}
 \usepackage{graphicx}
+\usepackage{verbatim}
 \DeclareGraphicsExtensions{.jpg}
 \usepackage{url}
 
 \def\author{Jacques Uber}
-\def\title{FredMeyer Camping Headlamp}
+\def\title{Technical Description: FredMeyer Camping Headlamp}
 \def\date{\today}
 
 \fancyhf{} % clear all header and footer fields
@@ -30,6 +32,7 @@
 %
 % OO: Wednesday 9-12
 %
+\begin{document}
 \begin{comment}
 Introduction:
     "This is what is going on in the paper"
@@ -48,17 +51,48 @@ Body:
 Conclusion:
     "What I need from you"
 
+Formatting
+----------
+        Title
+        -----
+Introduction
+++++++++++++
+Names the object.
+Context
+Overview
+Contents of descriptiong
+
+Body
+++++
+Characteristics
+Components
+Materials
+Functions
+
 \end{comment}
-\begin{document}
-The FredMeyer headlamp is a pocket sized light source designed for wearing around one's head during
-situations when visibility could be aided by a supplementary light source. The headlamp is made up
-of two parts: the lamp, and the strap. The lamp has three settings allowing for light of different
-color to be emitted from the bulbs.
+This document describes the FredMeyer headlamp. It is a pocket sized light source designed for
+wearing around one's head during situations when visibility could be aided by a supplementary light
+source.
+
+or
+
+The FredMeyer headlamp is a pocket sized light source designed for wearing around a user's head during
+situations when visibility could be aided by a supplementary light source.
+
+\begin{comment}
+The headlamp is made up of two parts: a black lamp containing 6 LEDs, and a black elastic
+variable-length strap. The lamp has three settings allowing for light of different color to be
+emitted from the LEDs. This paper describes the lamp, strap, and power settings.
+\end{comment}
+
+The headlamp is made up of two parts: the lamp, and the strap. The lamp has three settings
+allowing for light of different color to be emitted from the LEDs.
 
 
 \begin{figure}[h!]
 \centering
-\caption{Head lamp from the front.}
+\caption{Head lamp from the front. \copyright Jacques Uber}
+\label{fig:DERP}
 \includegraphics[width=3in]{headlamp}
 \end{figure}
 
@@ -79,6 +113,15 @@ The lamp preforms the primary function of the headlamp. It is roughly 1/4 pounds
 it's 3 AAA battery power source. The lamp itself is split into two modules: the bulb housing and the
 battery case. The two modules are joined by a hinge which allows the LEDs (Light Emitting
 Diodes) to be aimed variably. (figure 2)
+
+\begin{table}
+\begin{tabular}{ | c | c | c | p{5cm} |}
+    \hline
+    Height & Width & Length \\ \hline
+    X & Y & Z  \\ \hline
+\end{tabular}
+\caption{Lamp Dimentions}
+\end{table}
 
 \subsection{Bulb housing}
 The bulb housing module holds the LEDs, LED casing, and power switch.
@@ -107,10 +150,18 @@ placed on to the users forehead. To make this more comfortable there is a soft b
 back 5cm by 3cm panel.
 
 \section{The Strap}
-The strap serves the function of holding the headlamp to the users head. The variable length strap
+The strap serves the function of holding the headlamp to the users head. The variable-length strap
 is at maximum 2 feet long, and at minimum 1/2 foot long (figure 3). It is made of an elastic material that
 is black. The elasticity of the strap allows a strip of contracted material to be stretched into a
 strip 2 times it's original length.
+\begin{table}
+\begin{tabular}{ | c | c | c | p{5cm} |}
+    \hline
+    Height & Width & Length \\ \hline
+    X & Y & Z  \\ \hline
+\end{tabular}
+\caption{Lamp Dimentions}
+\end{table}
 
 \section{Bulb settings}
 The LEDs can be configured via the power toggle to emit three forms of light: Normal-White,
