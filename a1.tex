@@ -24,11 +24,15 @@
 \setlength{\parskip}{4mm}
 \linespread{1.4}
 
+
+
+
 \begin{document}
 The FredMeyer headlamp is a pocket sized light source designed for wearing around one's head during
 situations when visibility could be aided by a supplementary light source. The headlamp is made up
 of two parts: the lamp, and the strap. The lamp has three settings allowing for light of different
 color to be emitted from the bulbs.
+
 
 \begin{figure}[h!]
 \centering
@@ -90,6 +94,19 @@ strip 2 times it's original length.
 The LEDs can be configured via the power toggle to emit three forms of light: Normal-White,
 Bright-White, and Flashing-Red. These settings are achieved by powering some LEDs while not
 powering others.
+
+\begin{table}
+\begin{tabular}{ | c | c | c | p{5cm} |}
+    \hline
+    State & State Offset & \# of Powered LEDs & Description \\ \hline
+    Normal White & 1 & 2 &  Baic setting. Two main LEDs are powered. Most appropriate for use over
+    long time durations.\\ \hline
+    Bright White & 2 & 4 &  Brightest setting. Two main LEDs and two white auxilary LEDs powered.
+    Most appropriate setting when a very bright light is needed.\\ \hline
+    Flashing Red & 3 & 4 &  Highest contrast setting. Two red auxilary LEDs flash.\\ \hline
+\end{tabular}
+\caption{Headlamp states. State Offset refers to the offset (number of power toggles) from the 'off' state.}
+\end{table}
 
 \subsection{Normal-White}
 From the off state, toggling power once will place the headlamp into the Normal-White state.  This
