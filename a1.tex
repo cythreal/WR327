@@ -1,8 +1,9 @@
 \documentclass[12pt]{article}
 \usepackage[hmargin=1in, vmargin=1in]{geometry}
 \usepackage{fancyhdr}
+\usepackage{setspace}
 \pagestyle{fancy}
-\usepackage[hang,small]{caption}
+\usepackage[small]{caption}
 \usepackage{lastpage}
 \usepackage{graphicx}
 \usepackage{verbatim}
@@ -16,6 +17,7 @@
 \fancyhf{} % clear all header and footer fields
 \fancyhead[LO]{\author}
 \fancyhead[RO]{\date}
+\renewcommand{\headrulewidth}{0pt}
 % The weird spacing here is to get the spacing of \thepage to be right.
 \fancyfoot[C]{\thepage\
                     / 7}
@@ -23,7 +25,7 @@
 \setcounter{secnumdepth}{0}
 \setlength{\parindent}{0pt}
 \setlength{\parskip}{4mm}
-\linespread{1.4}
+\linespread{1}
 % Talk about how the hinge works and where the power switch it relative to how the hinge swings.
 % Pictures:
 %   Use copyright: Name, Year
@@ -32,10 +34,12 @@
 % OO: Wednesday 9-12
 %
 \begin{document}
-\fancyhead[CO]{\title}
-\listoffigures
-\listoftables
-\section{Introduction}
+%\fancyhead[CO]{\title}
+\begin{center}
+\underline{
+\large{\title}
+}
+\end{center}
 \begin{comment}
 Questions:
 *   How should you reference figures and tables in a sentence?
@@ -77,7 +81,19 @@ Components
 Materials
 Functions
 
+Roby Notes
+----------
+Single spaced
+Don't label the table
+Move title into first page
+Remove top line
+Re-work strap paragraph
+Not "forms of light", "modes" maybe?
+remove "toggle"-> "pressing the buttom once"
+Space between units (ie 5 mm)
+
 \end{comment}
+\singlespacing
 The FredMeyer headlamp is a pocket sized light source designed for wearing around a user's head during
 situations when visibility could be aided by a supplementary light source.
 
@@ -88,21 +104,25 @@ settings.
 
 \begin{figure}[h!]
 \centering
-\caption[Front view of the headlamp] {Front view of the headlamp. \copyright Jacques Uber 2012}
+\label{Figure Derp}
+\caption[Front view of the headlamp] {Front view of the headlamp.}
 \label{fig:DERP}
 \includegraphics[width=3in]{headlamp}
+\\ {\tiny \copyright  Jacques Uber 2012}
 \end{figure}
 
 \begin{figure}[h!]
 \centering
-\caption[Side view of the headlamp] {Side view of the headlamp. \copyright Jacques Uber 2012}
+\caption[Side view of the headlamp] {Side view of the headlamp.}
 \includegraphics[width=3in]{headlamp_side}
+\\ {\tiny \copyright  Jacques Uber 2012}
 \end{figure}
 
 \begin{figure}[h!]
 \centering
-\caption[Top view of the headlamp] {Top view of the headlamp. \copyright Jacques Uber 2012}
+\caption[Top view of the headlamp] {Top view of the headlamp}
 \includegraphics[width=3in]{headlamp_top}
+\\ {\tiny \copyright  Jacques Uber 2012}
 \end{figure}
 
 \section{The Lamp}
@@ -111,12 +131,12 @@ it's 3 AAA-battery power source. The lamp itself is split into two modules: the 
 battery case. The two modules are joined by a hinge which allows the LEDs to be aimed variably (see
 figure 2).
 
-\begin{table}
+\begin{table}[h!]
 \begin{center}
 \begin{tabular}{ | c | c | c | p{5cm} |}
     \hline
     Height & Width & Depth \\ \hline
-    3.5cm & 5cm & 3.5cm  \\ \hline
+    3.5 cm & 5 cm & 3.5 cm  \\ \hline
 \end{tabular}
 \end{center}
 \caption{Lamp Dimensions}
@@ -127,16 +147,16 @@ The bulb housing module holds the LEDs, LED casing, and power switch.
 
 \subsubsection{LEDs}
 The lamp has 6 main LEDs, 4 of the LEDs are white and the other 2 are red. Of the 4 white LED's
-2 of them have a radius of 0.5cm and are located symmetrically opposite of each other located 1cm
-away from the front center line of the lamp.  The remaining 4 LEDs have a radius of 0.25cm and are
-aligned symmetrically opposite to each other and are lined up starting 2cm away from the front
-center line of the lamp. With regard to the 4 0.5cm LEDs, the two furthest from the center line are
+2 of them have a radius of 0.5 cm and are located symmetrically opposite of each other located 1 cm
+away from the front center line of the lamp.  The remaining 4 LEDs have a radius of 0.25 cm and are
+aligned symmetrically opposite to each other and are lined up starting 2 cm away from the front
+center line of the lamp. With regard to the 4 0.5 cm LEDs, the two furthest from the center line are
 white, the inner pair are red (see figure 1).
 
 \subsubsection{LED Casing}
 To protect the LEDs, a clear form fitting case covers the front of the lamp.  The case also acts to
 focus and intensify the light from the LEDs. The case consists of hard plastic and is roughly
-3mm thick.
+3 mm thick.
 
 \subsubsection{Power Toggle}
 Turning on the lamp and cycling through the lamp's power settings is done with the plastic yellow
@@ -144,12 +164,12 @@ power toggle located on the top of the lamp (see figure 3). The toggle is pressu
 
 \subsection{Battery Case}
 The majority of the headlamp is used to house the power supply. The supply case is rectangular with
-rounded edges (see figure 2). It is 5cm across, 3.5cm wide, and 1.5cm deep. When in use, the back of
+rounded edges (see figure 2). It is 5 cm across, 3.5 cm wide, and 1.5 cm deep. When in use, the back of
 the case is placed on to the users forehead. To make this more comfortable there is a soft black
-padding on the back 5cm by 3.5cm panel.
+padding on the back 5 cm by 3.5 cm panel.
 
 \section{The Strap}
-The strap serves the function of holding the headlamp to the users head. The variable-length strap
+The strap holds the headlamp to the users' head. The variable-length strap
 is at maximum 2 feet long, and at minimum 1/2 foot long (see figure 3). It is made of an elastic material that
 is black. The elasticity of the strap allows a strip of contracted material to be stretched into a
 strip 2 times it's original length.
@@ -158,7 +178,7 @@ strip 2 times it's original length.
 \begin{tabular}{ | c | c | c | p{5cm} |}
     \hline
     Height & Thickness & Length \\ \hline
-    1.5cm & 2.5mm & 2ft  \\ \hline
+    1.5 cm & 2.5 mm & 2ft  \\ \hline
 \end{tabular}
 \end{center}
 \caption[Strap Dimensions]{Strap Dimensions when the strap is fully extended.}
@@ -187,16 +207,16 @@ powering others.
 
 \subsection{Normal-White}
 From the off state, toggling power once will place the headlamp into the Normal-White state.  This
-setting drives power to the two main, 0.5cm radius, LEDs.
+setting drives power to the two main, 0.5 cm radius, LEDs.
 
 \subsection{Bright-White}
 From the off state, toggling power twice will place the headlamp into the Bright-White state.  This
-setting drives power to both the two main, 0.5cm radius, LEDs and the two outer white, 0.25cm
+setting drives power to both the two main, 0.5 cm radius, LEDs and the two outer white, 0.25 cm
 radius, LEDs. The headlamp emits the most light while in this state.
 
 \subsection{Flashing-Red}
 From the off state, toggling power three times will place the headlamp into the Flashing-Red state.
-This setting drives power to the two inner, 0.5cm radius, red LEDs. While in this state the
+This setting drives power to the two inner, 0.5 cm radius, red LEDs. While in this state the
 LEDs will flash on and off at a frequency of 3 times per second. Each flash has a duration of
 0.25 seconds.
 
