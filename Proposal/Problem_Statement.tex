@@ -1,0 +1,62 @@
+\documentclass[12pt]{article}
+\usepackage[hmargin=1in, vmargin=1in]{geometry}
+\usepackage{fancyhdr}
+\usepackage{setspace}
+\pagestyle{fancy}
+\usepackage[small]{caption}
+\usepackage{lastpage}
+\usepackage{graphicx}
+\usepackage{verbatim}
+\DeclareGraphicsExtensions{.jpg}
+\usepackage{url}
+
+\def\author{Jacques Uber}
+\def\title{Problem Statement: Internet Censorship}
+\def\date{\today}
+
+\fancyhf{} % clear all header and footer fields
+\fancyhead[LO]{\author}
+\fancyhead[RO]{\date}
+\renewcommand{\headrulewidth}{0pt}
+\fancyfoot[C]{\thepage\
+                    / 1}
+
+\setcounter{secnumdepth}{0}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{4mm}
+\linespread{1}
+\begin{document}
+\underline{
+\large{\title}
+}
+
+\section{Statement 1}
+%To maintain an Internet where network nodes have full interconnectivity with one another, tools must
+%be designed that circumvent the filters and barriers built to break connectivity.
+The Internet is a network of networks that should have full interconnectivity between all public
+nodes.
+
+\section{Statement 2 (But...)}
+The combination of faster hardware and market demand has created an Internet unlike the Intranets of
+the early and late 1990s. Governments and Corporations can easily block content they deem worthy of
+censorship using highly specialized tools developed by western technology firms such as Blue Coat
+and Websense.
+
+\section{Statement 3}
+If tools that make circumventing filters and firewalls possible are not developed, Governments and
+Corporations will find that censoring materials is easy. Internet users will risk being punished for
+the content they post on the internet and certain content will not be viewable due to IP blocks, URL
+blocks, and other technical manifestations of censorship; the greater Internet will not be connected.
+
+\section{Research}
+New ways to ensure connectivity on the internet have emerged. Tor, the The Anonymity Network, is a
+tool used to bypass national firewalls and reach content that has been censored. It is also used to post
+anonymously to blogs and social media sites. As Governments have become more aware of this technology, the
+effectiveness of Tor has broken down. In January 2011 Iran blocked all Tor traffic and stopped
+anyone from using Tor from within the networks of the major Iranian ISPs (Internet Service
+Providers). China systematically blocks Tor Relays stopping their population from using the network
+to connect to servers that are on their black list. Tor has also been suffering from latency and
+bandwidth issues due to use of the BitTorrent protocol within it's relays. I will investigate the
+ways in which the Tor protocol is becoming more resilient to being identified and blocked by
+Governments and ways in which it is improving its QoS (Quality of Service).
+\end{document}

@@ -1,0 +1,61 @@
+Use MLA
+-------
+... (Authors last name pg#).
+Don't re-write the scope.
+
+Proposal
+--------
+Proposing to him to conduct a literal review on a certian topic.
+Getting approval to do a literature review.
+Needs:
+    * Problem statement
+    * Proposal statement (I propose to conduct a literature review on X) <-- done
+    * Scope and organization
+    * Background. Fills in the blanks. Why is it a problem. What is the current research? What is
+    the current thinking?
+    * Project description.
+
+What are the [results, physio, cognitive](effects) of [daycare, SAHP, nannies, school,
+college](childcare) on children(6mon-4years)?
+
+What are the changes to DNS and host configuration that end users will experience[observer] when switching to an IPv6 network from an IPv4 network?
+
+Better define:
+    * changes
+        - application
+        - DNS?
+        - DHCP (general host configuration?)
+    * end users
+        - Laptops
+        - Cellphones
+        - Leaf node devices
+        - Users of a service
+
+    * experience
+        - Errors?
+        - Improvments?
+        - Compared to IPv4
+
+Problem Statement
+-----------------
+What topic are you proposing to write about?:
++++++++++++++++++++++++++++++++++++++++++++++
+What are the changes to DNS and host configuration that leaf node devices will experience[observer] when switching to an IPv6 network from an IPv4 network?
+
+What is the best way for a teir 3 ISP to migrate to IPv6?
+
+What is the problem?
+++++++++++++++++++++
+DNS and host configuration has historically been done an IPv4 network.
+
+What are the consiquences of the problem existing?
+++++++++++++++++++++++++++++++++++++++++++++++++++
+Things will be different. IS (information system) infrastructure is not prepaired for IPv6.
+
+Describe the ideal situation if the problem didn't exists or was solved.
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+We would have years of experience with IPv6 and all infrastrucure will already be suited toward an IPv6 network.
+
+Homework for Tuesday
+--------------------
+Write a problem statement and bring it to class.

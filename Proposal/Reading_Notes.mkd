@@ -1,0 +1,39 @@
+Internet Filtering and Censorship
+---------------------------------
+Samir N. Hamade
+* Proxy.org <- good place to learn about current technology.
+* Good intro into types of filtering (IP, url, DNS)
+* Examples of which contries are doing what type of filtering
+* Filtering can happen at different levels (i.e. Govt, ISP, home).
+
+"While no one can object to the filtering and
+blocking of pornography, hate, violence and terror
+sites on the Internet, many warn against expanding
+the use of these software to oppress people and
+prevent them from exercising their rights of free
+access to information as part of their intellectual
+freedom."
+
+Mentions that Islamic countries filter cites that advocate christianity.
+
+Internet Filtering in the Middle East and North Africa - OpenNet Initiative (2009)
+----------------------------------------------------------------------------------
+What is ONI?:
+"The OpenNet Initiative is a collaborative partnership of three institutions: the Citizen Lab at the
+Munk School of Global Affairs, University of Toronto; the Berkman Center for Internet & Society at
+Harvard University; and the SecDev Group (Ottawa)."
+
+"The Middle East and North Africa is one of
+the most heavily censored regions in the
+world"
+
+"ONI conducted tests for technical Internet
+filtering in all of the countries in the
+Middle East and North Africa between
+2008 and 2009. Test results prove that
+the governments and Internet service
+providers (ISPs) censor content deemed
+politically sensitive; critical of
+governments, leaders or ruling families;
+morally offensive; or in violation of public
+ethics and order." (6)
