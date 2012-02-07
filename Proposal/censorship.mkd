@@ -1,0 +1,26 @@
+(Possible) Problem Statement
+============================
+What are the methods used to block and filter content on the Internet and how can new and existing
+tools help to maintain full interconnectivity between nodes on the Internet.
+
+Questions
+---------
+What topic are you proposing to write about?:
++++++++++++++++++++++++++++++++++++++++++++++
+Strategies and technologies used to censor content on the internet.
+
+What is the problem?
+++++++++++++++++++++
+The combination of faster hardware and market demand has created an Internet unlike the Intranets of
+just a few years ago. Governments and Corporations can easily block content they deem worthy of
+censorship.
+
+What are the consequences of the problem existing?
+++++++++++++++++++++++++++++++++++++++++++++++++++
+Barriers that limit connectivity can now exist between two nodes on the Internet. Because the
+barriers break existing protocols new protocols are required to facilitate circumvention.
+
+Describe the ideal situation if the problem didn't exists or was solved.
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+An arbitrary network node can transparently communicate arbitrary information to all other nodes
+connected to it's network.
