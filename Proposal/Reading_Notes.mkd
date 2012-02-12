@@ -1,3 +1,18 @@
+######################
+#   Notes on Tor     #
+######################
+"All Tor traffic is relayed in fixed-size (512-byte) cells. A
+cell consists of a header field and a payload. The header
+contains metadata about the cell, such as the circuit iden-
+tifier."
+
+"When a cell arrives at an OR, the OR decrypts the
+cell, extracts the information necessary from the header, and
+then pushes the cell into the output queue for its circuit (the
+circuit queue). The time cost of this process is negligible [18]
+as a fraction of the overall time for a cell to be processed by
+an OR."
+
 Internet Filtering and Censorship
 ---------------------------------
 Samir N. Hamade
@@ -37,3 +52,134 @@ politically sensitive; critical of
 governments, leaders or ruling families;
 morally offensive; or in violation of public
 ethics and order." (6)
+
+"A Case Study on Measuring Statistical Data in the Tor Anonymity Network" (wecsr10.pdf)
+-------------------------------------------------------------------------
+
+
+"Locating Hidden Servers."
+--------------------------
+Timming attack.
+"To a first approximation, if an adversary can watch the edges of
+a Tor circuit, then she can confirm who is communicating."
+
+"By using the node both as a server inside the network and as
+the Client asking for the web pages from the Hid-
+den Server, the attacker is able to get precise timing
+without having to externally synchronize the time
+with another node."
+
+Their attack:
+Normal:
+HS -> Node1 -> Node2 -> Node3 -> RP -> Node4 -> Client.
+A hidden service has any choice in who they route through when connecting to the RP (rondivouz
+point). Tor connections usually go through 3 nodes "internal" nodes. The client advertises itself as
+an internal Node (this is easy because becoming a network node in Tor is done by volenteering). The
+goal of the attack is to have the client be chosen by the HS as Node1. Once the client finds itself
+as Node1 it can analyse traffic using packet counting and timeing analysis to determine if they are
+indeed talking to the HS.
+
+Attack Goal:
+HS -> Client -> Node2 -> Node3 -> RP -> Client.
+
+This is how the client will try to trick the HS to choose it as Node1
+"Alice’s server node will report a false higher
+uptime and the maximum network bandwidth
+to the directory server in order for other nodes
+to trust it for their circuits. This is still possible
+as there is (yet) no method for keeping reliable
+track of uptime at the different servers."
+
+Talking about determining which node they are.
+"Our match confirmation is an extended version
+of the packet counting... In addition to basic counting
+of cells, we also make use of precise timing infor-
+mation of when cells were received and transmit-
+ted, and the direction of each individual cell pass-
+ing in order to determine a circuit match."
+
+"All of our attacks rely on Alice being able to
+force the Hidden Server to create new circuits until
+she can cause it to create a circuit that first connects
+directly to her node."
+
+
+Measuring the Tor Network from Public Directory Information
+-----------------------------------------------------------
+(http://dl.acm.org/citation.cfm?id=1894882)
+Published in: Proceeding FC'10 Proceedings of the 14th international conference on Financial cryptograpy and data security
+
+
+Question: Can I use "DefenestraTor: Throwing out Windows in Tor" (Tor_unfairness_problem.pdf)
+Cited in "Tor is unfair: what to do about it." (found in ieee)
+
+Tor is Unfair -- And What To Do About It.
+-----------------------------------------
+Re-write scheduler.
+"[A]ll cells from all circuits that traverse the same pair of
+onion routers are multiplexed over the same TCP connection.
+These TCP connections can thus be perceived as links in an
+overlay network, which are used by potentially many users’
+circuits at the same time."
+
+"[H]ow should the resources of the onion routers be
+allocated to the individual connections and circuits?"
+
+"[I]n an anonymity system like Tor exchanging as little explicit control
+information as possible is particularly crucial also for another
+reason: control data is always at the risk of leaking information
+that can be used to break the anonymity."
+This removed the possibility of using existing solutions in other cuircut based networks e.g.
+ATMs.
+
+"connections are TCP/TLS links between neighboring onion routers, circuits
+are the logical end-to-end user connections through this over-
+lay."
+
+At the moment Tor uses a Round Robin scheduling alogrithm. In computing Round Robin has specific
+meaning: Given a set up entities contending for a limited resource, Round Robin schedualing
+gaurentees that each entity gets a fair amount of the resource.
+
+The incoming data from connects from other OR's are read in a Round Robin and written to the correct
+output connection also in a Round Robin fashion. This ensures that each connection will eventually
+get serviced. The problem comes when one connection has far more data than another connection. Since
+no 
+
+The encyption that takes place during processing is not a bottle neck. (cite this)
+
+An Improved Algorithm for Tor Circuit Scheduling
+------------------------------------------------
+"Although the multi-hop architecture inevitably brings extra
+latency, the experienced latency is higher than this effect
+can explain."
+
+"[T]he degree of anonymity Tor pro-
+vides depends on the number of users. Higher latency will
+discourage more users from joining the network. Hence, the
+performance issues do not only affect user experience, but
+also degrade Tor’s security properties."
+
+"The uses of Tor can be divided into interactive streams
+and non-interactive streams. Interactive streams include
+web browsing, instant messaging, SSH, and telnet, while
+non-interactive streams include bulk file transfer such as
+FTP and BitTorrent."
+
+Talking about how tor decides which cuircuts cell's get selected to be sent to the next OR.
+"The previous algorithm was simply to select active circuits in round-robin fashion."
+
+How to make Tor faster for interative sessions without harming bulk transfer sessions.
+
+"In order to prioritize interactive circuits, we need to de-
+cide, for example, which circuits are using HTTP, and which
+circuits are using BitTorrent. Unfortunately, we cannot de-
+termine the application protocol by looking directly at the
+content of the cells, since all of the cells are encrypted ex-
+cept for at the exit OR."
+
+It is also possible for people to use HTTP for bulk transfer so just going off of the protocol is
+not enough to signal whether or not you should give traffic a higher priority.
+
+The author points out that just blocking bittorrent traffic by blocking ports used by the bittorrent
+protocol is not a good idea. He cites the idea that "Tor is intended to be application neutral".
+Also, this can be easily circumvented by changing which port bittorrent is running on.

@@ -1,0 +1,42 @@
+Problem Statement
+-----------------
+* Come out with your topic right away. Don't build suspense.
+* 3 to 5 direct sentences that introduce the problem statment.
+* No thesis. No introduction.
+
+Don't answer the questions in the paper, he just wants to know the questions I am going to ask.
+
+Six possible sources.
+When displaying the sources, use bullets.
+
+Title - Should be "Memorandum", no header, centered, top middle.
+
+                Memorandum
+
+To: Roby Conner, Writing 327 Instructor
+From: Sutend Name, oregonstatState Univerity Student
+Date: Jan 23 2012
+Subjects: Proposal to ...
+
+<bold>Introduction</bold>
+BlahBlahBlahBlahBlahBlahBlahBlahBlahBlah
+BlahBlahBlahBlahBlahBlahBlahBlahBlahBlah
+BlahBlahBlahBlahBlahBlahBlahBlahBlahBlah
+
+<bold>BackGround</bold>
+BlahBlahBlahBlahBlahBlahBlahBlahBlahBlah
+BlahBlahBlahBlahBlahBlahBlahBlahBlahBlah
+BlahBlahBlahBlahBlahBlahBlahBlahBlahBlah
+
+<bold>Reasearch Plan</bold>
+The literature review will adress the folliwing research questions:
+    *   What tresns ... ? (Questions I'm going to answer)
+    *   Are there ... ?
+    *   Are there ... ?
+    *   Are there ... ?
+
+The following sources will potentially provide a survey of the current reasearch on the saftery and
+efficacy of caccines and the risk of not caccination children:
+    * (list sources here )
+
+<bold>Conclusion</bold>
