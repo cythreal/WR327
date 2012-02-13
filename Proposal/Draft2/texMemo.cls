@@ -59,7 +59,6 @@
 		\par\end{flushright}%
 	\end{minipage}
 	}
-	
 	% To, From, Subject Block
 	\begin{description}
 		\ifthenelse{\equal{\@memoto}{\relax}}{}{\item [{To:}] \@memoto}
