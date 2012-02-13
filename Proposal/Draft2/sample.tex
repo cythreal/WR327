@@ -1,0 +1,104 @@
+\documentclass[letterpaper,12pt]{texMemo}
+\usepackage[american]{babel}
+\usepackage{natbib}
+\usepackage{setspace}
+
+\memoto{Roby Conner, Writing 327 Instructor}
+\memofrom{Jacques Uber, Oregon State University Student}
+\memodate{Feb 12, 2012}
+\memosubject{Proposal to investigate imporovements to Tor}
+
+\begin{document}
+\begin{center}
+\large Memorandum
+\end{center}
+\singlespace
+\maketitle
+\section*{Introduction}
+
+It is my goal to investigate how engineers are working to improve Tor. I will focus on the
+improvements to latency and congestion, and the methods used to improve user anonymity.
+
+The literature review will include all scholarly articles on Tor found via the Academic Search
+Premier database using the keywords Tor, Improvements, Congestion, Fair, Timing Attacks,
+Anonymity and published between the years 2009 and 2012.
+
+There will be three section in the document. The first section will introduce core concepts used
+to implement Tor. The second will investigate techniques used to compromise user
+anonymity. The third will investigate network latency and congestion.
+
+\section*{Background}
+
+    \subsection*{What is Tor?}
+    Tor is an overlay network that enables users to use the Internet anonymously. Tor was originally
+    developed by the Navy and is used by militaries, journalist, law enforcement, activists, and the
+    average internet user\citep[2]{tor:web}. To ensure a users privacy and anonymity Tor uses multiple
+    layers of encryption while routing cells of data and is sometimes refered to as the "Onion Router".
+
+    \subsection*{Why is Tor important?}
+    Tor has many legititamte uses. ONI, the OpenNet Initiative, reported that "the Middle East and
+    North Africa is one of the most heavily censored regions in the world". It also claimed that it
+    "conducted tests for technical Internet filtering in all of the countries in the Middle East
+    and North Africa between 2008 and 2009. Test results prove that the governments and Internet
+    service providers (ISPs) censor content deemed politically sensitive; critical of governments,
+    leaders or ruling families; morally offensive; or in violation of public ethics and order." Tor
+    can bypass these filters ensuring a freedom of speech and freedom of expression on the Internet.
+
+
+    \subsection*{Congestion}
+    As of 2010 users on the Tor have experienced network delay. The reason why network
+    delay was the focus of (\citeauthor[2]{delay}). They ask the question, why is there delay in the network,
+    and where is the delay taking place. The routers themselves could be the cause. All traffic that
+    goes through the network needs to pass throuh routers. It could be that there are traffic bottle
+    necks forming at certain nodes. The methods used to test for what is causing the delays would be
+    to set up multiple Onion Routers and measure where bottle necks occur and record how the circuit
+    selection algorithm is making node selections.
+
+    Different protocols can cause congestion more than others. This is the focus of .
+    There is growing concern that bulk transfer protocols, like Bittorent and other P2P (Peer to
+    Peer) protocols, are causing latency sensitive protocols, like ssh and HTTP, to become delayed
+    and in some cases hard to use \citep[]{analysis}. This problems are not new to computer networks.
+    Major ISPs (Internet Service Providers) have to make sure that their cusomters have the ablity
+    to stream music and browse the web while also accomidating other services like FTP (File Transfer
+    Protocol) and Bittorent. This coexistance is normally achieved by packet shapers. Packet shapers
+    look at traffic (usually the source and destination port of the traffic) and give bandwidth
+    priority to latency sensitive protocols. This is not possible on the Tor network. The encryption
+    that gives anonymity also stops and QoS (Quality of Service from being applied).
+
+    Reworking how Tor scheduales traffic is a possible solution to Congestion.  A Tor Onion Router
+    treats all data equally. A Router will forward data for multiple circuits and it uses a Round Robin
+    algorithm to determine which circuit it will service. This means that circuits with data that
+    tends to come in bursts will have the same priority as a circuit that has a relativly
+    continuous flow of data through it. This is not optimal because data that comes in bursts is usually
+    sensative to latency and should take priority over traffic that appears continuous. \citep[]{Tang}
+    There have been multiple schedualling schemes proposed to replace the Round Robin schedauler.
+
+\begin{itemize}
+    \item
+    \citep[]{unfair} This paper explores the mechanisms for handling congestion
+    and fairness and proposes a new scheduling algorithm.
+    \item
+    \citep[]{Tang} This paper proposes a new scheduling algorithm.
+    \item
+    \citep[]{analysis} Chaabane analysis what the tor network is being used for and where congestion is taking place.
+    \item
+    \citep[]{delay} Dhungel exposes where and how Tor is unfair to certain kinds of traffic.
+    \item
+    \citep[]{Bauer} Bauer discusses the consiquences of new routing algorithms and proposes a new
+    algorithm.
+    \item
+    \citep[]{Edman} This paper explores "modifications to Tor's path selection algorithm to help clients avoid
+    an AS-level observer".
+\end{itemize}
+
+
+\section*{Research Plan}
+Conclusion
+    o Summary of Key Points
+
+
+
+
+\bibliographystyle{mla-good}
+\bibliography{sample}
+\end{document} 
