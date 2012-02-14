@@ -17,16 +17,15 @@
 \maketitle
 %\section*{Introduction}
 
-It is my goal to investigate how engineers are working to improve Tor. I will focus on the
-improvements to latency and congestion, and the methods used to improve user anonymity.
+It is my goal to investigate how engineers are working to improve the latency and congestion issues in Tor.
 
 The literature review will include all scholarly articles on Tor found via the Academic Search
 Premier database using the keywords Tor, Improvements, Congestion, Fair, Timing Attacks,
 Anonymity and published between the years 2009 and 2012.
 
-There will be three section in the document. The first section will introduce core concepts used
-to implement Tor. The second will investigate techniques used to compromise user
-anonymity. The third will investigate network latency and congestion.
+There will be three section in the document. The first section will introduce core concepts used to
+implement Tor. The second will investigate why latency and congestion exists. The third will
+investigate the proposals to improve latency and congestion.
 
 \section*{Background}
 
@@ -46,59 +45,66 @@ anonymity. The third will investigate network latency and congestion.
     can bypass these filters ensuring a freedom of speech and freedom of expression on the Internet.
 
 
-    \subsection*{Congestion}
-    As of 2010 users on the Tor have experienced network delay. The reason why network
-    delay was the focus of (\citeauthor[2]{delay}). They ask the question, why is there delay in the network,
-    and where is the delay taking place. The routers themselves could be the cause. All traffic that
-    goes through the network needs to pass throuh routers. It could be that there are traffic bottle
-    necks forming at certain nodes. The methods used to test for what is causing the delays would be
+\section*{Research Plan}
+    As of 2010 users on the Tor network have experienced network delay. Reason for network delay was the
+    focus of \citeauthor[]{delay}.  Why there delay in the network, and
+    where is the delay taking place? The routers themselves could be the cause. All traffic that
+    goes through the network needs to pass through routers. It could be that there are bottle
+    necks forming at certain nodes \citeauthor{delay}. The method used to test for what is causing the delays was
     to set up multiple Onion Routers and measure where bottle necks occur and record how the circuit
     selection algorithm is making node selections.
 
-    Different protocols can cause congestion more than others. This is the focus of .
-    There is growing concern that bulk transfer protocols, like Bittorent and other P2P (Peer to
-    Peer) protocols, are causing latency sensitive protocols, like ssh and HTTP, to become delayed
-    and in some cases hard to use \citep[]{analysis}. This problems are not new to computer networks.
-    Major ISPs (Internet Service Providers) have to make sure that their cusomters have the ablity
-    to stream music and browse the web while also accomidating other services like FTP (File Transfer
-    Protocol) and Bittorent. This coexistance is normally achieved by packet shapers. Packet shapers
-    look at traffic (usually the source and destination port of the traffic) and give bandwidth
-    priority to latency sensitive protocols. This is not possible on the Tor network. The encryption
-    that gives anonymity also stops and QoS (Quality of Service from being applied).
+    Different protocols can cause congestion more than others. This is the focus of
+    \citeauthor{analysis}.  There is growing concern that bulk transfer protocols, like Bittorent
+    and other P2P (Peer to Peer) protocols, are causing latency sensitive protocols, like ssh and
+    HTTP, to become delayed and in some cases hard to use (\citeauthor[2]{analysis}). This problem
+    is not new.  Major ISPs (Internet Service Providers) have allowed 
+    their customers have the ability to stream music and browse the web while also accomidating other
+    services like FTP (File Transfer Protocol) and Bittorent. This coexistance is normally achieved
+    by packet shapers. A packet shapers looks at traffic (usually the source and destination port of
+    the traffic) and gives bandwidth priority to latency sensitive protocols. This is not possible on
+    the Tor network. The encryption that gives anonymity also stops the use of QoS (Quality of
+    Service) mechanisms.
 
-    Reworking how Tor scheduales traffic is a possible solution to Congestion.  A Tor Onion Router
-    treats all data equally. A Router will forward data for multiple circuits and it uses a Round Robin
+    Reworking how Tor scheduals traffic is a possible solution to Congestion.  A Tor Onion Router
+    treats all data equally. Also, a Router will forward data for multiple circuits and it uses a Round Robin
     algorithm to determine which circuit it will service. This means that circuits with data that
-    tends to come in bursts will have the same priority as a circuit that has a relativly
-    continuous flow of data through it. This is not optimal because data that comes in bursts is usually
-    sensative to latency and should take priority over traffic that appears continuous. \citep[]{Tang}
-    There have been multiple schedualling schemes proposed to replace the Round Robin schedauler.
+    tends to come in bursts will have the same priority as a circuit that has a relativly continuous
+    flow of data through it. This is not optimal because data that comes in bursts is usually
+    sensative to latency and should take priority over traffic that appears continuous.
+    (\citeauthor[2]{unfair}).  There have been multiple schedualling schemes proposed to replace the
+    Round Robin schedauler.
 
 \begin{itemize}
     \item
-    \citep[]{unfair} This paper explores the mechanisms for handling congestion
+    \citeauthor{unfair}: This paper explores the mechanisms for handling congestion
     and fairness and proposes a new scheduling algorithm.
     \item
-    \citep[]{Tang} This paper proposes a new scheduling algorithm.
+    \citeauthor{Tang}: This paper proposes a new scheduling algorithm.
     \item
-    \citep[]{analysis} Chaabane analysis what the tor network is being used for and where congestion is taking place.
+    \citeauthor{analysis}: This paper does analysis on what the tor network is being used for and where congestion is taking place.
     \item
-    \citep[]{delay} Dhungel exposes where and how Tor is unfair to certain kinds of traffic.
+    \citeauthor{delay}: This paper investigates where and how Tor is unfair to certain kinds of traffic.
     \item
-    \citep[]{Bauer} Bauer discusses the consiquences of new routing algorithms and proposes a new
-    algorithm.
+    \citeauthor{Bauer}: This paper discusses the consiquences of replacing the Round Robin algorithm and
+    proposes a new algorithm.
     \item
-    \citep[]{Edman} This paper explores "modifications to Tor's path selection algorithm to help clients avoid
-    an AS-level observer".
+    \citeauthor{Edman}: This paper explores modifications to Tor's path selection algorithm to help
+    clients avoid an observer from discovering their identities.
 \end{itemize}
 
 
-\section*{Research Plan}
-Conclusion
-    o Summary of Key Points
-
-
-
+\section*{Conclusion}
+\begin{itemize}
+    \item
+    Tor is a valuable cyber anonymity tool for many disciplines.
+    \item
+    Tor has congestion and latency issues.
+    \item
+    There are many different proposed solutions to Tor's congestion and latency issues.
+\end{itemize}
+I am asking for approval to do a literature review on the ways engineers are addressing the
+congestion and latency issues within the Tor network.
 
 \bibliographystyle{mla-good}
 \bibliography{sample}
