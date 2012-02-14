@@ -4,8 +4,8 @@ all:
 	latex sample
 	latex sample
 	dvipdf sample.dvi
-	evince sample.pdf
 	rm *.aux *.dvi *.log *.bbl *.blg
+	evince sample.pdf
 
 clean:
 	rm *.aux *.dvi *.log *.bbl *.blg

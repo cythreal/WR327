@@ -3,7 +3,7 @@
 \usepackage{natbib}
 \usepackage{setspace}
 
-\memoto{Roby Conner, Writing 327 Instructor}
+\memoto{Roby Conner, Writing 327 InstrucTor}
 \memofrom{Jacques Uber, Oregon State University Student}
 \memodate{Feb 12, 2012}
 \memosubject{Proposal to investigate imporovements to Tor}
@@ -33,16 +33,16 @@ problem. The third will investigate the proposals to improve latency and congest
     \subsection*{What is Tor?}
     Tor is an overlay network that enables users to use the Internet anonymously. Tor was originally
     developed by the Navy and is used by militaries, journalist, law enforcement, activists, and the
-    average internet user\citep[2]{tor:web}. To ensure a users privacy and anonymity Tor uses multiple
-    layers of encryption while routing cells of data and is sometimes refered to as the "Onion Router".
+    average internet user \citep[2]{Tor:web}. To ensure a users privacy and anonymity Tor uses multiple
+    layers of encryption while routing cells of data and is sometimes referred to as the "Onion Router".
 
     \subsection*{Why is Tor important?}
-    Tor has many legititamte uses. ONI, the OpenNet Initiative, reported that "the Middle East and
+    Tor has many legitimate uses. ONI, the OpenNet Initiative, reported that "the Middle East and
     North Africa is one of the most heavily censored regions in the world". It also claimed that it
     "conducted tests for technical Internet filtering in all of the countries in the Middle East
     and North Africa between 2008 and 2009. Test results prove that the governments and Internet
     service providers (ISPs) censor content deemed politically sensitive; critical of governments,
-    leaders or ruling families; morally offensive; or in violation of public ethics and order." Tor
+    leaders or ruling families; morally offensive; or in violation of public ethics and order." (\citeauthor[6]{ONI}) Tor
     can bypass these filters ensuring a freedom of speech and freedom of expression on the Internet.
 
 
@@ -51,17 +51,17 @@ problem. The third will investigate the proposals to improve latency and congest
     focus of \citeauthor[]{delay}.  Why there delay in the network, and
     where is the delay taking place? The routers themselves could be the cause. All traffic that
     goes through the network needs to pass through routers. It could be that there are bottle
-    necks forming at certain nodes \citeauthor{delay}. The method used to test for what is causing the delays was
+    necks forming at certain nodes (\citeauthor{delay}). The method used to test for what is causing the delays was
     to set up multiple Onion Routers and measure where bottle necks occur and record how the circuit
     selection algorithm is making node selections.
 
     Different protocols can cause congestion more than others. This is the focus of
-    \citeauthor{analysis}.  There is growing concern that bulk transfer protocols, like Bittorent
+    \citeauthor{analysis}.  There is growing concern that bulk transfer protocols, like BitTorent
     and other P2P (Peer to Peer) protocols, are causing latency sensitive protocols, like ssh and
     HTTP, to become delayed and in some cases hard to use (\citeauthor[2]{analysis}). This problem
     is not new.  Major ISPs (Internet Service Providers) have allowed 
     their customers have the ability to stream music and browse the web while also accomidating other
-    services like FTP (File Transfer Protocol) and Bittorent. This coexistance is normally achieved
+    services like FTP (File Transfer Protocol) and BitTorent. This coexistance is normally achieved
     by packet shapers. A packet shapers looks at traffic (usually the source and destination port of
     the traffic) and gives bandwidth priority to latency sensitive protocols. This is not possible on
     the Tor network. The encryption that gives anonymity also stops the use of QoS (Quality of
@@ -78,19 +78,19 @@ problem. The third will investigate the proposals to improve latency and congest
 
 \begin{itemize}
     \item
-    \citeauthor{unfair}: This paper explores the mechanisms for handling congestion
+    \citeauthor*{unfair}: This paper explores the mechanisms for handling congestion
     and fairness and proposes a new scheduling algorithm.
     \item
-    \citeauthor{Tang}: This paper proposes a new scheduling algorithm.
+    \citeauthor*{Tang}: This paper proposes a new scheduling algorithm.
     \item
-    \citeauthor{analysis}: This paper does analysis on what the tor network is being used for and where congestion is taking place.
+    \citeauthor*{analysis}: This paper does analysis on what the Tor network is being used for and where congestion is taking place.
     \item
-    \citeauthor{delay}: This paper investigates where and how Tor is unfair to certain kinds of traffic.
+    \citeauthor*{delay}: This paper investigates where and how Tor is unfair to certain kinds of traffic.
     \item
-    \citeauthor{Bauer}: This paper discusses the consiquences of replacing the Round Robin algorithm and
+    \citeauthor*{Bauer}: This paper discusses the consiquences of replacing the Round Robin algorithm and
     proposes a new algorithm.
     \item
-    \citeauthor{Edman}: This paper explores modifications to Tor's path selection algorithm to help
+    \citeauthor*{Edman}: This paper explores modifications to Tor's path selection algorithm to help
     clients avoid an observer from discovering their identities.
 \end{itemize}
 
