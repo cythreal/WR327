@@ -33,49 +33,56 @@ problem. The third will investigate the proposals to improve latency and congest
     \subsection*{What is Tor?}
     Tor is an overlay network that enables users to use the Internet anonymously. Tor was originally
     developed by the Navy and is used by militaries, journalist, law enforcement, activists, and the
-    average internet user \citep[2]{Tor:web}. To ensure a users privacy and anonymity Tor uses multiple
-    layers of encryption while routing cells of data and is sometimes referred to as the "Onion Router".
+    average internet user \citep[2]{Tor:web}. To ensure a user's privacy and anonymity Tor uses multiple
+    layers of encryption while routing cells of data and is sometimes referred to as the "Onion
+    Router". By building circuits between multiple nodes, a user routes her traffic through the
+    network. Tor is an overlay network. This means that packets are routed and scheduled. While the
+    majority of networks are packet switched, Tor is built on a circuit switching scheme.
 
     \subsection*{Why is Tor important?}
     Tor has many legitimate uses. ONI, the OpenNet Initiative, reported that "the Middle East and
     North Africa is one of the most heavily censored regions in the world". It also claimed that it
-    "conducted tests for technical Internet filtering in all of the countries in the Middle East
-    and North Africa between 2008 and 2009. Test results prove that the governments and Internet
-    service providers (ISPs) censor content deemed politically sensitive; critical of governments,
-    leaders or ruling families; morally offensive; or in violation of public ethics and order." (\citeauthor[6]{ONI}) Tor
-    can bypass these filters ensuring a freedom of speech and freedom of expression on the Internet.
+    "conducted tests for technical Internet filtering in all of the countries in the Middle East and
+    North Africa between 2008 and 2009. Test results prove that the governments and Internet service
+    providers (ISPs) censor content deemed politically sensitive; critical of governments, leaders
+    or ruling families; morally offensive; or in violation of public ethics and order."
+    (\citeauthor[6]{ONI}) Tor can bypass these filters ensuring a freedom of speech and freedom of
+    expression on the Internet.
+
+    \subsection*{Congestion and Delay}
+    As of 2010 users on the Tor network have experienced network delay. \citeauthor[]{delay} ask the
+    questions: why is there delay in the network, and where is the delay taking place? The Tor
+    routers, as opposed to the proxies or the target service, seemed to be the cause. "Router delays
+    are the principal contributors to delays in Tor. Some routers frequently introduce delays as
+    high as a few seconds" (\citeauthor[3]{delay}). They used log files from network nodes that they
+    controlled to measure "Total Delay" while making sure that delay caused by the target service was not
+    included in the timing data.
 
 
 \section*{Research Plan}
-    As of 2010 users on the Tor network have experienced network delay. Reason for network delay was the
-    focus of \citeauthor[]{delay}.  Why there delay in the network, and
-    where is the delay taking place? The routers themselves could be the cause. All traffic that
-    goes through the network needs to pass through routers. It could be that there are bottle
-    necks forming at certain nodes (\citeauthor{delay}). The method used to test for what is causing the delays was
-    to set up multiple Onion Routers and measure where bottle necks occur and record how the circuit
-    selection algorithm is making node selections.
 
     Different protocols can cause congestion more than others. This is the focus of
-    \citeauthor{analysis}.  There is growing concern that bulk transfer protocols, like BitTorent
-    and other P2P (Peer to Peer) protocols, are causing latency sensitive protocols, like ssh and
-    HTTP, to become delayed and in some cases hard to use (\citeauthor[2]{analysis}). This problem
-    is not new.  Major ISPs (Internet Service Providers) have allowed 
-    their customers have the ability to stream music and browse the web while also accomidating other
-    services like FTP (File Transfer Protocol) and BitTorent. This coexistance is normally achieved
-    by packet shapers. A packet shapers looks at traffic (usually the source and destination port of
-    the traffic) and gives bandwidth priority to latency sensitive protocols. This is not possible on
-    the Tor network. The encryption that gives anonymity also stops the use of QoS (Quality of
-    Service) mechanisms.
+    \citeauthor{analysis}. There is concern that bulk transfer protocols, like FTP (File Transfer
+    Protocol) and P2P (Peer to Peer) protocols, are causing latency sensitive protocols, like ssh
+    and HTTP, to become delayed and in some cases hard to use (\citeauthor[2]{analysis}). This
+    problem is not new. Major ISPs (Internet Service Providers) have allowed their customers to have
+    the ability to stream music and browse the web while also accommodating other services like FTP
+    and BitTorent. This coexistence is normally achieved by packet shapers. A packet shapers looks
+    at traffic (usually the source and destination port of the traffic) and gives bandwidth priority
+    to latency sensitive protocols. This is not possible on the Tor network. The encryption that
+    gives anonymity also stops the use of QoS (Quality of Service) mechanisms.
 
-    Reworking how Tor scheduals traffic is a possible solution to Congestion.  A Tor Onion Router
-    treats all data equally. Also, a Router will forward data for multiple circuits and it uses a Round Robin
-    algorithm to determine which circuit it will service. This means that circuits with data that
-    tends to come in bursts will have the same priority as a circuit that has a relativly continuous
-    flow of data through it. This is not optimal because data that comes in bursts is usually
-    sensative to latency and should take priority over traffic that appears continuous.
-    (\citeauthor[2]{unfair}).  There have been multiple schedualling schemes proposed to replace the
-    Round Robin schedauler.
+    Reworking how Tor schedules traffic is a possible solution to Congestion. When deciding when to
+    forward a cell, a Tor Onion Router treats all data equally. Also, a Router will forward data for
+    multiple circuits and it uses a Round Robin algorithm to determine which circuit it will
+    service. This means that a circuit with data that tends to come in bursts will have the same
+    priority as a circuit that contains a relatively continuous flow of data through it. This is not
+    optimal because data that comes in bursts is usually sensitive to latency and should take
+    priority over traffic that appears continuous (\citeauthor[2]{unfair}). There have been
+    multiple scheduling schemes proposed to replace the Round Robin scheduler. A large part my literature
+    review will be spent reviewing these scheduling algorithms and their effect on delay and latency.
 
+\subsubsection*{White Papers}
 \begin{itemize}
     \item
     \citeauthor*{unfair}: This paper explores the mechanisms for handling congestion
@@ -87,11 +94,15 @@ problem. The third will investigate the proposals to improve latency and congest
     \item
     \citeauthor*{delay}: This paper investigates where and how Tor is unfair to certain kinds of traffic.
     \item
-    \citeauthor*{Bauer}: This paper discusses the consiquences of replacing the Round Robin algorithm and
+    \citeauthor*{Bauer}: This paper discusses the consequences of replacing the Round Robin algorithm and
     proposes a new algorithm.
     \item
     \citeauthor*{Edman}: This paper explores modifications to Tor's path selection algorithm to help
-    clients avoid an observer from discovering their identities.
+    clients avoid observers from discovering their identities.
+    \item
+    \citeauthor*{Moore}: This paper describes a different idea of how to improve latency. The
+    authors propose that traffic should be throttled at the ingress of the network.
+
 \end{itemize}
 
 
