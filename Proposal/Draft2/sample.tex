@@ -18,9 +18,7 @@
 %\section*{Introduction}
 
 It is my goal to investigate how engineers are working to improve latency and congestion issues in
-Tor.
-
-The literature review will include all scholarly articles on Tor found via the Academic Search
+Tor. The literature review will include all scholarly articles on Tor found via the Academic Search
 Premier, IEEE, and ACM databases using the keywords Tor, Improvements, Congestion, Fair, Timing
 Attacks, Anonymity and published between the years 2009 and 2012.
 
@@ -34,11 +32,19 @@ problem. The third will investigate the proposals to improve latency and congest
     \subsection*{What is Tor?}
     Tor is enables users to use the Internet anonymously. Tor was originally developed by the Navy
     and is used by militaries, journalist, law enforcement, activists, and the average internet user
-    \citep[2]{Tor:web}. To ensure a user's privacy and anonymity Tor uses multiple layers of
-    encryption while routing cells of data. By building circuits between multiple nodes, a user
-    routes her traffic through the network. Tor is an overlay network. This means that packets are
-    routed and scheduled. While the Internet is packet switched, Tor is built on a circuit switching
-    scheme.
+    \citep[2]{Tor:web}. 
+    %To ensure a user's privacy and anonymity Tor uses multiple layers of
+    %encryption while routing cells of data. By building circuits between multiple nodes, a user
+    %routes her traffic through the network. Tor is an overlay network. This means that packets are
+    %routed and scheduled. While the Internet is packet switched, Tor is built on a circuit switching
+    %scheme.
+    "Tor is a volunteer-operated network of approximately 2,500 application-layer routers (also
+    called relays or ORs). The network provides anonymity by forwarding traffic from clients (also
+    called proxies or OPs) along a bidirectional anonymous circuit consisting of Tor routers. To
+    conceal the identities of the communicants, Tor encrypts messages such that each relay can
+    discern only the identities of the previous and next hops along the anonymous circuit.  By
+    default, Tor uses three-relay hops, consisting of a guard relay, a middle relay, and an exit
+    relay." (\citeauthor[1]{Moore})
 
     \subsection*{Why is Tor important?}
     ONI, the OpenNet Initiative, reported that "the Middle East and North Africa is one of the most
@@ -69,19 +75,27 @@ problem. The third will investigate the proposals to improve latency and congest
     the ability to stream music and browse the web while also accommodating other services like FTP
     and BitTorent. This coexistence is normally achieved by packet shapers. A packet shapers looks
     at traffic (usually the source and destination port of the traffic) and gives bandwidth priority
-    to latency sensitive protocols. This is not possible on the Tor network. The encryption that
-    gives anonymity also stops the use of QoS (Quality of Service) mechanisms.
+    to latency sensitive protocols. This is not possible on the inner nodes of the Tor network due
+    to the encrypted nature of Tor.
+
+
+    \subsection*{Ingress and Postgress Filtering}
+    If a user is not using a nativly encrypted service like HTTP or standard Bittorrent, it is
+    possible to preform DPI (Deep Packet Inspection) on that traffic when it leaves or exits the
+    network. It has been proposed that "exit relays could examine outgoing traffic and discard any
+    detected BitTorrent packets." Blocking Bittorent outright might seem ironic and rate limiting
+    might be a better option (\citeauthor[2]{Moore}).
 
     \subsection*{Scheduler}
-    Reworking how Tor schedules traffic is a possible solution to Congestion. When deciding when to
+    Reworking how Tor schedules traffic is a possible solution to congestion. When deciding when to
     forward a cell, a Tor Onion Router treats all data equally. Also, a Router will forward data for
     multiple circuits and it uses a Round Robin algorithm to determine which circuit it will
     service. This means that a circuit with data that tends to come in bursts will have the same
-    priority as a circuit that contains a relatively continuous flow of data. This is not
-    optimal because data that comes in bursts is usually sensitive to latency and should take
-    priority over traffic that appears continuous (\citeauthor[2]{unfair}). There have been
-    multiple scheduling schemes proposed to replace the Round Robin scheduler. A large part my literature
-    review will be spent reviewing these scheduling algorithms and their effect on delay and latency.
+    priority as a circuit that contains a relatively continuous flow of data. This is not optimal
+    because data that comes in bursts is usually sensitive to latency and should take priority over
+    traffic that appears continuous (\citeauthor[2]{unfair}). There have been multiple scheduling
+    schemes proposed to replace the Round Robin scheduler. A large part my literature review will be
+    spent reviewing these scheduling algorithms and their effect on delay and latency.
 
 \subsubsection*{White Papers}
 \begin{itemize}
