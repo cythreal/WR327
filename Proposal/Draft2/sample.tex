@@ -1,9 +1,9 @@
-\documentclass[letterpaper,12pt]{texMemo}
+\documentclass[letterpaper,13pt]{texMemo}
 \usepackage[american]{babel}
 \usepackage{natbib}
 \usepackage{setspace}
 
-\memoto{Roby Conner, Writing 327 InstrucTor}
+\memoto{Roby Conner, Writing 327 Instructor}
 \memofrom{Jacques Uber, Oregon State University Student}
 \memodate{Feb 12, 2012}
 \memosubject{Proposal to investigate imporovements to Tor}
@@ -17,11 +17,12 @@
 \maketitle
 %\section*{Introduction}
 
-It is my goal to investigate how engineers are working to improve latency and congestion issues in Tor.
+It is my goal to investigate how engineers are working to improve latency and congestion issues in
+Tor.
 
 The literature review will include all scholarly articles on Tor found via the Academic Search
-Premier database using the keywords Tor, Improvements, Congestion, Fair, Timing Attacks,
-Anonymity and published between the years 2009 and 2012.
+Premier, IEEE, and ACM databases using the keywords Tor, Improvements, Congestion, Fair, Timing
+Attacks, Anonymity and published between the years 2009 and 2012.
 
 \subsubsection*{Organization}
 There will be three section in the document. The first section will introduce core concepts used to
@@ -31,36 +32,35 @@ problem. The third will investigate the proposals to improve latency and congest
 \section*{Background}
 
     \subsection*{What is Tor?}
-    Tor is an overlay network that enables users to use the Internet anonymously. Tor was originally
-    developed by the Navy and is used by militaries, journalist, law enforcement, activists, and the
-    average internet user \citep[2]{Tor:web}. To ensure a user's privacy and anonymity Tor uses multiple
-    layers of encryption while routing cells of data and is sometimes referred to as the "Onion
-    Router". By building circuits between multiple nodes, a user routes her traffic through the
-    network. Tor is an overlay network. This means that packets are routed and scheduled. While the
-    majority of networks are packet switched, Tor is built on a circuit switching scheme.
+    Tor is enables users to use the Internet anonymously. Tor was originally developed by the Navy
+    and is used by militaries, journalist, law enforcement, activists, and the average internet user
+    \citep[2]{Tor:web}. To ensure a user's privacy and anonymity Tor uses multiple layers of
+    encryption while routing cells of data. By building circuits between multiple nodes, a user
+    routes her traffic through the network. Tor is an overlay network. This means that packets are
+    routed and scheduled. While the Internet is packet switched, Tor is built on a circuit switching
+    scheme.
 
     \subsection*{Why is Tor important?}
-    Tor has many legitimate uses. ONI, the OpenNet Initiative, reported that "the Middle East and
-    North Africa is one of the most heavily censored regions in the world". It also claimed that it
-    "conducted tests for technical Internet filtering in all of the countries in the Middle East and
-    North Africa between 2008 and 2009. Test results prove that the governments and Internet service
-    providers (ISPs) censor content deemed politically sensitive; critical of governments, leaders
-    or ruling families; morally offensive; or in violation of public ethics and order."
-    (\citeauthor[6]{ONI}) Tor can bypass these filters ensuring a freedom of speech and freedom of
-    expression on the Internet.
+    ONI, the OpenNet Initiative, reported that "the Middle East and North Africa is one of the most
+    heavily censored regions in the world". It also claimed that it "conducted tests for technical
+    Internet filtering in all of the countries in the Middle East and North Africa between 2008 and
+    2009. Test results prove that the governments and Internet service providers (ISPs) censor
+    content deemed politically sensitive; critical of governments, leaders or ruling families;
+    morally offensive; or in violation of public ethics and order" (\citeauthor[6]{ONI}). Tor can
+    bypass these filters ensuring freedom of speech and expression on the Internet.
+
+\section*{Research Plan}
+
 
     \subsection*{Congestion and Delay}
     As of 2010 users on the Tor network have experienced network delay. \citeauthor[]{delay} ask the
-    questions: why is there delay in the network, and where is the delay taking place? The Tor
-    routers, as opposed to the proxies or the target service, seemed to be the cause. "Router delays
+    questions: why is there delay in the network, and where is the delay taking place? "Router delays
     are the principal contributors to delays in Tor. Some routers frequently introduce delays as
     high as a few seconds" (\citeauthor[3]{delay}). They used log files from network nodes that they
     controlled to measure "Total Delay" while making sure that delay caused by the target service was not
     included in the timing data.
 
-
-\section*{Research Plan}
-
+    \subsection*{Causes}
     Different protocols can cause congestion more than others. This is the focus of
     \citeauthor{analysis}. There is concern that bulk transfer protocols, like FTP (File Transfer
     Protocol) and P2P (Peer to Peer) protocols, are causing latency sensitive protocols, like ssh
@@ -72,11 +72,12 @@ problem. The third will investigate the proposals to improve latency and congest
     to latency sensitive protocols. This is not possible on the Tor network. The encryption that
     gives anonymity also stops the use of QoS (Quality of Service) mechanisms.
 
+    \subsection*{Scheduler}
     Reworking how Tor schedules traffic is a possible solution to Congestion. When deciding when to
     forward a cell, a Tor Onion Router treats all data equally. Also, a Router will forward data for
     multiple circuits and it uses a Round Robin algorithm to determine which circuit it will
     service. This means that a circuit with data that tends to come in bursts will have the same
-    priority as a circuit that contains a relatively continuous flow of data through it. This is not
+    priority as a circuit that contains a relatively continuous flow of data. This is not
     optimal because data that comes in bursts is usually sensitive to latency and should take
     priority over traffic that appears continuous (\citeauthor[2]{unfair}). There have been
     multiple scheduling schemes proposed to replace the Round Robin scheduler. A large part my literature

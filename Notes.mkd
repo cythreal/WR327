@@ -1,0 +1,5 @@
+Comprise:
+These parts comprise the stapler.
+
+Composed of:
+The stapler is composed of these parts.
