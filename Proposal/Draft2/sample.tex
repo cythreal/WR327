@@ -16,14 +16,14 @@
 \setlength{\topmargin}{0in}
 \maketitle
 %\section*{Introduction}
-
+\noindent
 It is my goal to investigate how engineers are working to improve latency and congestion issues in
 Tor. The literature review will include all scholarly articles on Tor found via the Academic Search
 Premier, IEEE, and ACM databases using the keywords Tor, Improvements, Congestion, Fair, Timing
 Attacks, Anonymity and published between the years 2009 and 2012.
 
-\subsubsection*{Organization}
-There will be three section in the document. The first section will introduce core concepts used to
+\noindent
+\\There will be three section in this document. The first section will introduce core concepts used to
 implement Tor. The second will investigate why latency and congestion exists and why it is a
 problem. The third will investigate the proposals to improve latency and congestion.
 
@@ -59,41 +59,40 @@ problem. The third will investigate the proposals to improve latency and congest
 
 
     \subsection*{Congestion and Delay}
-    As of 2010 users on the Tor network have experienced network delay. \citeauthor[]{delay} ask the
-    questions: why is there delay in the network, and where is the delay taking place? "Router delays
-    are the principal contributors to delays in Tor. Some routers frequently introduce delays as
-    high as a few seconds" (\citeauthor[3]{delay}). They used log files from network nodes that they
-    controlled to measure "Total Delay" while making sure that delay caused by the target service was not
-    included in the timing data.
+    As of 2010 users on the Tor network have experienced network delay.  "Why are there delays in
+    the network?" and "Where are the delays taking place?" are the questions asked by
+    \citeauthor[]{delay}. "Router delays are the principal contributors to delays in Tor. Some
+    routers frequently introduce delays as high as a few seconds" (\citeauthor[3]{delay}). They used
+    log files from network nodes that they controlled to measure "Total Delay" while making sure
+    that delay caused by the target service was not included in the timing data.
 
     \subsection*{Causes}
     Different protocols can cause congestion more than others. This is the focus of
     \citeauthor{analysis}. There is concern that bulk transfer protocols, like FTP (File Transfer
     Protocol) and P2P (Peer to Peer) protocols, are causing latency sensitive protocols, like ssh
     and HTTP, to become delayed and in some cases hard to use (\citeauthor[2]{analysis}). This
-    problem is not new. Major ISPs (Internet Service Providers) have allowed their customers to have
-    the ability to stream music and browse the web while also accommodating other services like FTP
-    and BitTorent. This coexistence is normally achieved by packet shapers. A packet shapers looks
-    at traffic (usually the source and destination port of the traffic) and gives bandwidth priority
-    to latency sensitive protocols. This is not possible on the inner nodes of the Tor network due
-    to the encrypted nature of Tor.
-
+    problem is not new. Major ISPs have allowed their customers to have the ability to stream music
+    and browse the web while also accommodating other services like FTP and BitTorent. This
+    coexistence is normally achieved by packet shapers. A packet shaper looks at the TCP source and
+    destination port of traffic to determine what type of traffic it is. It can then give
+    bandwidth priority to latency sensitive protocols. This is not possible on the inner nodes of
+    the Tor network due to the encrypted nature of Tor.
 
     \subsection*{Ingress and Postgress Filtering}
-    If a user is not using a nativly encrypted service like HTTP or standard Bittorrent, it is
+    If a user is not using a natively encrypted service like HTTP or standard Bittorrent, it is
     possible to preform DPI (Deep Packet Inspection) on that traffic when it leaves or exits the
     network. It has been proposed that "exit relays could examine outgoing traffic and discard any
     detected BitTorrent packets." Blocking Bittorent outright might seem ironic and rate limiting
     might be a better option (\citeauthor[2]{Moore}).
 
     \subsection*{Scheduler}
-    Reworking how Tor schedules traffic is a possible solution to congestion. When deciding when to
-    forward a cell, a Tor Onion Router treats all data equally. Also, a Router will forward data for
-    multiple circuits and it uses a Round Robin algorithm to determine which circuit it will
-    service. This means that a circuit with data that tends to come in bursts will have the same
-    priority as a circuit that contains a relatively continuous flow of data. This is not optimal
-    because data that comes in bursts is usually sensitive to latency and should take priority over
-    traffic that appears continuous (\citeauthor[2]{unfair}). There have been multiple scheduling
+    A possible solution to congestion is to rework how Tor schedules traffic. A Tor onion router
+    treats all data equally when deciding when to forward a cell. Furthermore, a router will
+    forward data for multiple circuits using a Round Robin algorithm to determine which circuit it
+    will serve. This means that a circuit with data that comes in bursts will have the same priority
+    as a circuit that contains a periodic flow of data. This is not optimal because data that comes
+    in intermittently is usually sensitive to latency and should take priority over traffic that
+    arrives at regular intervals (\citeauthor[2]{unfair}). There have been multiple scheduling
     schemes proposed to replace the Round Robin scheduler. A large part my literature review will be
     spent reviewing these scheduling algorithms and their effect on delay and latency.
 
