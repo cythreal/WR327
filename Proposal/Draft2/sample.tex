@@ -23,7 +23,7 @@ Premier, IEEE, and ACM databases using the keywords Tor, Improvements, Congestio
 Attacks, Anonymity and published between the years 2009 and 2012.
 
 \subsubsection*{Organization}
-There will be three section in the document. The first section will introduce core concepts used to
+There will be three section in this document. The first section will introduce core concepts used to
 implement Tor. The second will investigate why latency and congestion exists and why it is a
 problem. The third will investigate the proposals to improve latency and congestion.
 
@@ -71,16 +71,16 @@ problem. The third will investigate the proposals to improve latency and congest
     \citeauthor{analysis}. There is concern that bulk transfer protocols, like FTP (File Transfer
     Protocol) and P2P (Peer to Peer) protocols, are causing latency sensitive protocols, like ssh
     and HTTP, to become delayed and in some cases hard to use (\citeauthor[2]{analysis}). This
-    problem is not new. Major ISPs (Internet Service Providers) have allowed their customers to have
+    problem is not new. Major ISPs have allowed their customers to have
     the ability to stream music and browse the web while also accommodating other services like FTP
     and BitTorent. This coexistence is normally achieved by packet shapers. A packet shaper looks
-    at traffic (usually the source and destination port of the traffic) and gives bandwidth priority
+    at traffic (usually the TCP source and destination port of the traffic) and gives bandwidth priority
     to latency sensitive protocols. This is not possible on the inner nodes of the Tor network due
     to the encrypted nature of Tor.
 
 
-    \subsection*{Ingress and Postgress Filtering}
-    If a user is not using a nativly encrypted service like HTTP or standard Bittorrent, it is
+    \subsection*{Ingress and Egress Filtering}
+    If a user is not using a natively encrypted service like HTTP or standard Bittorrent, it is
     possible to preform DPI (Deep Packet Inspection) on that traffic when it leaves or exits the
     network. It has been proposed that "exit relays could examine outgoing traffic and discard any
     detected BitTorrent packets." Blocking Bittorent outright might seem ironic and rate limiting
@@ -113,7 +113,7 @@ problem. The third will investigate the proposals to improve latency and congest
     proposes a new algorithm.
     \item
     \citeauthor*{Edman}: This paper explores modifications to Tor's path selection algorithm to help
-    clients avoid observers from discovering their identities.
+    clients prevent observers from discovering their identities.
     \item
     \citeauthor*{Moore}: This paper describes a different idea of how to improve latency. The
     authors propose that traffic should be throttled at the ingress of the network.
