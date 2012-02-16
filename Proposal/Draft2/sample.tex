@@ -15,7 +15,7 @@
 \end{center}
 \setlength{\topmargin}{0in}
 \maketitle
-%\section*{Introduction}
+\section*{Introduction}
 \noindent
 It is my goal to investigate how engineers are working to improve latency and congestion issues in
 Tor. The literature review will include all scholarly articles on Tor found via the Academic Search
@@ -71,17 +71,6 @@ problem. The third will investigate the proposals to improve latency and congest
     \citeauthor{analysis}. There is concern that bulk transfer protocols, like FTP (File Transfer
     Protocol) and P2P (Peer to Peer) protocols, are causing latency sensitive protocols, like ssh
     and HTTP, to become delayed and in some cases hard to use (\citeauthor[2]{analysis}). This
-<<<<<<< HEAD
-    problem is not new. Major ISPs have allowed their customers to have
-    the ability to stream music and browse the web while also accommodating other services like FTP
-    and BitTorent. This coexistence is normally achieved by packet shapers. A packet shaper looks
-    at traffic (usually the TCP source and destination port of the traffic) and gives bandwidth priority
-    to latency sensitive protocols. This is not possible on the inner nodes of the Tor network due
-    to the encrypted nature of Tor.
-
-
-    \subsection*{Ingress and Egress Filtering}
-=======
     problem is not new. Major ISPs have allowed their customers to have the ability to stream music
     and browse the web while also accommodating other services like FTP and BitTorent. This
     coexistence is normally achieved by packet shapers. A packet shaper looks at the TCP source and
@@ -90,7 +79,6 @@ problem. The third will investigate the proposals to improve latency and congest
     the Tor network due to the encrypted nature of Tor.
 
     \subsection*{Ingress and Postgress Filtering}
->>>>>>> 13e12f7211c2c99ef15d21a2898a24488e033deb
     If a user is not using a natively encrypted service like HTTP or standard Bittorrent, it is
     possible to preform DPI (Deep Packet Inspection) on that traffic when it leaves or exits the
     network. It has been proposed that "exit relays could examine outgoing traffic and discard any
@@ -132,7 +120,7 @@ problem. The third will investigate the proposals to improve latency and congest
 \end{itemize}
 
 
-\section*{Conclusion}
+{\section*{Conclusion}}
 \begin{itemize}
     \item
     Tor is a valuable cyber anonymity tool for many disciplines.
@@ -144,6 +132,8 @@ problem. The third will investigate the proposals to improve latency and congest
 I am asking for approval to do a literature review on the ways engineers are addressing the
 congestion and latency issues within the Tor network.
 
+\newpage
 \bibliographystyle{mla-good}
+\center \renewcommand\refname{Work Cited\\ }
 \bibliography{sample}
-\end{document} 
+\end{document}
