@@ -9,10 +9,10 @@
 \memosubject{Proposal to investigate imporovements to Tor}
 
 \begin{document}
-\singlespace
 \begin{center}
 \large {\bf Memorandum}
 \end{center}
+\singlespace
 \setlength{\topmargin}{0in}
 \maketitle
 \section*{Introduction}
@@ -32,7 +32,7 @@ problem. The third will investigate the proposals to improve latency and congest
     \subsection*{What is Tor?}
     Tor enables users to use the Internet anonymously. Tor was originally developed by the Navy
     and is used by militaries, journalist, law enforcement, activists, and the average internet user
-    \citep[2]{Tor:web}. 
+    \citep[2]{Tor:web}.
     %To ensure a user's privacy and anonymity Tor uses multiple layers of
     %encryption while routing cells of data. By building circuits between multiple nodes, a user
     %routes her traffic through the network. Tor is an overlay network. This means that packets are
@@ -42,7 +42,7 @@ problem. The third will investigate the proposals to improve latency and congest
     called relays or ORs). The network provides anonymity by forwarding traffic from clients (also
     called proxies or OPs) along a bidirectional anonymous circuit consisting of Tor routers. To
     conceal the identities of the communicants, Tor encrypts messages such that each relay can
-    discern only the identities of the previous and next hops along the anonymous circuit.  By
+    discern only the identities of the previous and next hops along the anonymous circuit. By
     default, Tor uses three-relay hops, consisting of a guard relay, a middle relay, and an exit
     relay." (\citeauthor[1]{Moore})
 
@@ -59,7 +59,7 @@ problem. The third will investigate the proposals to improve latency and congest
 
 
     \subsection*{Congestion and Delay}
-    As of 2010 users on the Tor network have experienced network delay.  "Why are there delays in
+    As of 2010, users on the Tor network have experienced network delay. "Why are there delays in
     the network?" and "Where are the delays taking place?" are the questions asked by
     \citeauthor[]{delay}. "Router delays are the principal contributors to delays in Tor. Some
     routers frequently introduce delays as high as a few seconds" (\citeauthor[3]{delay}). They used
@@ -67,7 +67,7 @@ problem. The third will investigate the proposals to improve latency and congest
     that delay caused by the target service was not included in the timing data.
 
     \subsection*{Causes}
-    Different protocols can cause congestion more than others. This is the focus of
+    Certain protocols can cause congestion more than others. This is the focus of
     \citeauthor{analysis}. There is concern that bulk transfer protocols, like FTP (File Transfer
     Protocol) and P2P (Peer to Peer) protocols, are causing latency sensitive protocols, like ssh
     and HTTP, to become delayed and in some cases hard to use (\citeauthor[2]{analysis}). This
@@ -83,7 +83,7 @@ problem. The third will investigate the proposals to improve latency and congest
     possible to preform DPI (Deep Packet Inspection) on that traffic when it leaves or exits the
     network. It has been proposed that "exit relays could examine outgoing traffic and discard any
     detected BitTorrent packets." Blocking Bittorent outright might seem ironic and rate limiting
-    might be a better option (\citeauthor[2]{Moore}).
+    seems to be a better option (\citeauthor[2]{Moore}).
 
     \subsection*{Scheduler}
     A possible solution to congestion is to rework how Tor schedules traffic. A Tor onion router
@@ -111,11 +111,11 @@ problem. The third will investigate the proposals to improve latency and congest
     \citeauthor*{Bauer}: This paper discusses the consequences of replacing the Round Robin algorithm and
     proposes a new algorithm.
     \item
-    \citeauthor*{Edman}: This paper explores modifications to Tor's path selection algorithm to help
+    \citeauthor*{Edman}: This paper explores modification to Tor's path selection algorithm to help
     clients prevent observers from discovering their identities.
     \item
-    \citeauthor*{Moore}: This paper describes a different idea of how to improve latency. The
-    authors propose that traffic should be throttled at the ingress of the network.
+    \citeauthor*{Moore}: This paper proposes that traffic should be throttled at the ingress of the
+    network. The authors admit this is an unorthodox approach.
 
 \end{itemize}
 
