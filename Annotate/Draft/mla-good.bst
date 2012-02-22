@@ -112,9 +112,10 @@ FUNCTION {output.nonnull}
 FUNCTION {format.annotate}
 { annote empty$
         { "" }
-        { " \begin{quotation}\noindent "
+        { %" \begin{quotation}\noindent "
+          newline$
           annote
-          * " \end{quotation} " *
+          %* " \end{quotation} " *
         }
       if$
 }
