@@ -114,6 +114,7 @@ FUNCTION {format.annotate}
         { "" }
         { %" \begin{quotation}\noindent "
           newline$
+          newline$
           annote
           %* " \end{quotation} " *
         }
