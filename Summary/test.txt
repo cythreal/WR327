@@ -1,0 +1,25 @@
+
+The review found that information about how an organization's management should implement Lean in
+PD is not readily accessible. They also found when Lean is used in PD, value creation is not well defined.
+Organizations may need to completely re-organize to successfully implement Lean in their development
+process.
+When Lean is used in PD, the leadership provided by the chief engineer (CE) is critical.
+To help guide application, the review suggest that the methods used by Toyota (credited for
+developing modern Lean techniques) could be applied to PD. The review recommends forcing individual
+functions of the design process to ensure a part of the final product.
+The Lean used in manufacturing is well defined. The Lean that could be used in product
+design is not yet well defined. This vagueness can be attributed to Lean's origin, manufacturing, and
+only recent application to PD.
+Lean is a viable option for PD, specifically in the aerospace industry, but to what
+extent is still unknown.
+The term "Lean" was developed by the manufacturing industry. Because the process of design
+is different than manufacturing, the definition of "Lean" is starting to change. This is causing
+misunderstandings between researchers and practitioners when discussing Lean.
+The authors had six main findings:
+In the Literature review \emph{State-of-the-art in lean design engineering: a literature review on
+white collar lean} by T Baines*, H Lightfoot, G M Williams, and R Greenough, sought to answer the
+questions: What is the meaning of the term "Lean" in the context of product development (PD) and how
+can Lean be used to improve PD? How is Lean currently being used in PD? The review was targeted
+towards PD in the aerospace industry. The review did not find very many articles about Lean's
+application in PD. But, the existing evidence does show that applying Lean to product design can be
+economically beneficial.
