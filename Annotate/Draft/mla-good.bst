@@ -112,9 +112,16 @@ FUNCTION {output.nonnull}
 FUNCTION {format.annotate}
 { annote empty$
         { "" }
-        { " \begin{quotation}\noindent "
+        %{ " \begin{quotation}\noindent "
+        %{ " \begin{quotation}\noindent "
+        {
+        %"\begin{paragraph}\noindent " write$
+          newline$
+        "\vspace{5pt}" write$
           annote
-          * " \end{quotation} " *
+        %" \end{paragraph} " write$
+        %* " \end{quotation} " *
+        %* " \end{quotation} " *
         }
       if$
 }
