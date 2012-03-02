@@ -1,0 +1,60 @@
+Writing a summary is a process:
+===============================
+Step 1.
+    Read the article... more than once.
+    First time:
+        Read for a general sense of what is there and what it is about
+            Don't worry about taking notes
+            Don't re-read stuff
+Step 2.
+    Read it again. and again and again.
+    Write notes, highlight, highlight
+    Looking for :
+        General Topic - What is it about?
+        Main idea - Authors arguments, what are they trying to communicate
+            * specific examples of these ideas
+
+Step 3.
+    Write a one sentence summary of each paragraph in order.
+
+Step 4.
+    Write a once sentence summary of the whole document. (a.k.a A Thesis Statement)
+
+Step 5.
+    Write 1st draft.
+    Format
+    ++++++
+    Thesis
+    ...
+    (Sentances written in Step 3)
+    ...
+
+    Add connective tissue.
+
+Step 6.
+    Check summary against the original.
+
+Step 7.
+    Revise and proof read. (Two very different things)
+    Revision
+    --------
+    Re-thinking, seeing things again, maybe starting again.
+    Proof Read
+    ----------
+
+Summaries
+=========
+What must we know?
+* General Topic
+* Background content
+    * Define Lean
+    * Explain manufacturing usage
+    * Example: Toyota manufacturing system
+* Research Question
+* Scope and Methodology
+* Findings
+* Issues
+* Conclusion/Recommendataions
+
+Summary length
+600 to 1000 words per article. *Comprehensive*
