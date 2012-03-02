@@ -1,0 +1,142 @@
+Primary Research Question
+-------------------------
+
+Scope
+-----
+
+Secondary Research Questions
+----------------------------
+
+Findings
+--------
+
+Recommendations
+---------------
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Bauer, Kevin, McCoy, Damon, Grunwald, Dirk, Kohno, Tadayoshi, and Sicker, Douglas. “Low-resource
+routing attacks against tor.” Proceedings of the 2007 ACM workshop on Privacy in electronic society. WPES
+’07. New York, NY, USA: ACM, 2007, 11–20.
+URL http://doi.acm.org/10.1145/1314333.1314336
+
+
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Chaabane, A., Manils, P., and Kaafar, M.A. “Digging into Anonymous Traffic: A Deep Analysis of the Tor
+Anonymizing Network.” Network and System Security (NSS), 2010 4th International Conference on. 2010,
+167 –174.
+
+Primary Research Question
+-------------------------
+What applications are using the Tor network and what effect to those applications have on network
+performance?
+Scope
+-----
+The data was collected during two seperate experiments December 2009 and January 2010. The two
+data sets displayed similar trends. The data collected was in aggragated format meaning no user IP
+addresses were stored and the researchers were very careful not to break privacy laws or infringe on
+the privacy of the users. OpenDPI, an open source deep packet inspection too, was used to classify
+network traffic.
+
+Secondary Research Questions
+----------------------------
+Which protocols use the most bandwidth and what type of content does a user interact with while
+using Tor?
+
+
+Findings
+--------
+Two main ares:
+## BitTorrent
+BitTorrent traffic was the top contributer to bandwidth usage
+the bandwidth used by BitTorrent is disproportionate to other protocols
+the use of non-encrypted protocols is minimal.
+Many users use Tor as an easy way to set up a SOCKS proxy, this does not comply with the Tor protocol
+One quarter recorded traffic was unidentifiable by DPI techniques. The researchers
+were able to confirm with certainty that this traffic was encrypted BitTorrent and reinforced the
+finding that majority of traffic consists of the BitTorrent protocol.
+Using torrent infohashes, copyrighted movies, games, and T.V. shows were shown to be the most
+commonly torrented content type.
+
+## HTTP
+HTTP is responsible for most of the connections being made over the Tor network
+Popular content included (in order from most popular to least popular): Search Engine/Portals,
+Pornography, Computer/Internet, Social Networking, and Blogs/Web Communication.
+
+## Geopolitical data
+Seventy precent of clients that connected to the controlled entry nodes originated from only 10
+contries. The most common place of origin were the US and Germany and the proposed cause was that the high
+availability of internet and an increase in copyright law in those two countries caused the high.
+
+Recommendations
+---------------
+The authors hope that the data that they collected would help later research identify and fix
+problems in Tor.
+
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Dhungel, P., Steiner, M., Rimac, I., Hilt, V., and Ross, K.W. “Waiting for Anonymity: Understanding Delays
+in the Tor Overlay.” Peer-to-Peer Computing (P2P), 2010 IEEE Tenth International Conference on. 2010, 1 –4.
+
+Primary Research Question
+-------------------------
+What causes delay in Tor?
+
+Scope
+-----
+Observe routers in isolation and as sets of routers.
+Experiment went from August 2009 to March 2010.
+Used 4 nodes, three of which they controlled, to isolate an Onion Router.
+Used a chain of 4 nodes made of an onion proxy, entry router, exit router, and webserver controlled
+op, exit router, and webserver
+They broke the delay into two types: router delay, which is caused by queing and processing data
+cells, and latency, which is caused by delays in the connection median.
+
+
+Secondary Research Questions
+----------------------------
+Does router delay or latency cause more delay in Tor.
+
+Findings
+--------
+Experimental data was easy to replicate and trends in collected data were consistent over multiple trials of.
+
+It is normal for total delay caused by a router to not have any correlation with it's advertized bandwith.
+
+When there is a delay of greater than one second it is probably caused by router delay.
+Different routers can cause varying delays, but the majority of routers introduced less than 100ms
+of delay. 
+
+Experimental results showed fluctuation in router delay. The authors reason that either the Tor
+router selection algorithm is causing the fluctuations or the machine that is running the router is
+using bandwidth elsewhere to server other applications.
+
+By isolating a router in a lab environment, it was discovered that most router delay was caused by a
+bottle neck in the output socket write buffer. This is a common situation when the router is
+handling large amounts of traffic.
+
+Recommendations
+---------------
+The paper concludes by recommending modification to Tor's path selection algorithm and cell scheduling algorithm.
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Edman, Matthew and Syverson, Paul. “As-awareness in Tor path selection.” Proceedings of the 16th ACM
+conference on Computer and communications security. CCS ’09. New York, NY, USA: ACM, 2009, 380–389.
+URL http://doi.acm.org/10.1145/1653662.1653708
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Moore, W. Brad, Wacek, Chris, and Sherr, Micah. “Exploring the potential benefits of expanded rate limiting
+in Tor: slow and steady wins the race with Tortoise.” Proceedings of the 27th Annual Computer Security
+Applications Conference. ACSAC ’11. New York, NY, USA: ACM, 2011, 207–216.
+URL http://doi.acm.org/10.1145/2076732.2076762
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Tang, Can and Goldberg, Ian. “An improved algorithm for tor circuit scheduling.” Proceedings of the 17th
+ACM conference on Computer and communications security. CCS ’10. New York, NY, USA: ACM, 2010, 329–
+339.
+URL http://doi.acm.org/10.1145/1866307.1866345
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Tschorsch, Florian and Scheuermann, Bjorn. “Tor is unfair: And what to do about it.” Local Computer
+Networks (LCN), 2011 IEEE 36th Conference on. 2011, 432 –440.
+
