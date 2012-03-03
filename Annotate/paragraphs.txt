@@ -3,6 +3,8 @@ Vocabulary:
 Over lay network
 Connection - A node to node connection is defined as a TCP/TLS connection between two nodes on the network.
 Circuit - A circuit exists on a connection. Multiple circuits can exists over a single connection.
+Cell - One 512K data unit in the Tor network.
+Socket Buffer - 
 
 Primary Research Question
 -------------------------
@@ -141,6 +143,66 @@ Tang, Can and Goldberg, Ian. “An improved algorithm for tor circuit scheduling
 ACM conference on Computer and communications security. CCS ’10. New York, NY, USA: ACM, 2010, 329–
 339.
 URL http://doi.acm.org/10.1145/1866307.1866345
+
+Primary Research Question
+-------------------------
+How can priority be given to circuits that contain latency sensitive traffic?
+
+Scope
+-----
+The majority of users experience delay when using Tor. Users that experience
+too much delay will choose not to use Tor which consequently will make Tor
+less effective tool. By prioritizing latency sensitive traffic like HTTP, the
+authors tried to make interactive content appear to load faster while not hurting
+the overall performance of bulk transfer protocols.
+
+EWMA (Estimated Weighted Moving Average), sometimes referred to as the "rolling
+average", is an algorithm to remove the influence of data collected in the
+past and reflects recent trends in data set. TCP uses a similar weighted
+average when calculating RTT (Round Trip Times) when calibrating it's sliding
+window. EWMA was used to estimate how active a circuit was (cells per second).
+Circuits that were on average less active were given higher priority over
+circuits that had a higher cells-per-second count.
+
+Three experiments were conducted to test the effectiveness of using the EWMA
+method. The first experiment consisted of isolating three Onion Routers and
+three clients and having the clients build circuits through the same
+connection. Two of the clients preformed bulk transfer over their circuit and
+the third client attempted to download a small 300KB file (similar to the size of
+webpage). Timing data was collected with the stock Tor and then all three ORs
+were enabled with EWMA and data was again collected. Results showed an
+preformance boost of 2.17 seconds when downloading the small file.
+
+The second experiment was set up exactly like the first and explored whether
+enabling EWMA on some routers and not others had any affect on performance.
+The results found that the effectivness of EWMA depends on severity of
+congestion within the network.
+
+The third experiment asked, where does a cell spends most of it's time being queued <-- TODO
+when traveling through an Onion Router? This experiment was run locally on a
+single router. Timing data was collected at three points: when a cell entered
+a circuit queue, when the cell moved from the circuit queue to the socket
+output buffer, and when the cell finially leaves the socket buffer. The result
+proved that a cell spends most of it's time waiting to be flushed out of the
+circuit queue into the socket buffer. When the EWMA algorithm was enabled the
+observed time a cell spent in the circuit buffer was dramatically reduced from
+653 milliseconds to 115 milliseconds.
+
+Secondary Research Questions
+----------------------------
+
+
+Findings
+--------
+The negative effect felt by bulk transfer protocols when the EWMA algorithm
+was enabled was neglagable. Also, overhead caused by the calculations required
+to cary out EWMA were also neglagable. It is fair to assume that enabling an
+EWMA algorithm to schedule Tor traffic improves the preformance of latency
+sensative protocols on the Tor network.
+
+Recommendations
+---------------
+
 
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 Tschorsch, Florian and Scheuermann, Bjorn. “Tor is unfair: And what to do about it.” Local Computer
