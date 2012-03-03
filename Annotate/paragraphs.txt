@@ -1,3 +1,9 @@
+Vocabulary:
+-----------
+Over lay network
+Connection - A node to node connection is defined as a TCP/TLS connection between two nodes on the network.
+Circuit - A circuit exists on a connection. Multiple circuits can exists over a single connection.
+
 Primary Research Question
 -------------------------
 
@@ -140,3 +146,74 @@ URL http://doi.acm.org/10.1145/1866307.1866345
 Tschorsch, Florian and Scheuermann, Bjorn. “Tor is unfair: And what to do about it.” Local Computer
 Networks (LCN), 2011 IEEE 36th Conference on. 2011, 432 –440.
 
+Primary Research Question
+-------------------------
+What changes to Tor's scheduling algorithm can make fairness between cuircuts possible.
+
+
+Scope
+-----
+The goal of improvements is to improve the preformance of interactive
+protocols like HTTP.
+
+It is possible to adopt existing ideas and theories from other networks but
+they ideas and theories need to be modified to comply with Tor's overlay
+network topology. Replacing the concept of a link being an isolated
+connection between two nodes with Tor's concept of a link being a singe TCP
+connection possible sharing a single physical connection with other TCP
+sessions put existing theories into the correct context.
+
+The authors define 'fair' as being able to use resources freely when they are
+available but not over using them when a router is overloaded with traffic. As
+an example, if two circuits exist on a connection and both are allocated 1/2
+of the bandwidth, one of the circuits may use more than half of the bandwidth
+while the other circuit is idle. But, if both circuits are saturated with
+traffic, no one circuit will use more than it's share of the bandwidth.
+The goal modifying the scheduling algorithm was to allow no circuit to
+over use it's bandwidth allocation while not imposing new
+communication overhead between between routers. The restriction of no new
+overhead required existing algorithms used in ATM networks to facilitate
+fairness to be invalid and in need of modification before being integrated into
+Tor.
+
+Instead of scheduling traffic for individual circuits, Tor's current scheduler
+services connections in a round robin fashion. When a node is at it's
+bandwidth limit it evenly divides bandwidth between all outgoing connections
+leaving a connection with two circuits getting the same bandwidth allocation
+as a connection containing one circuit; two circuits will get 1/4 of the
+bandwidth while the other gets 1/2, this is not fair.
+
+
+
+Secondary Research Questions
+----------------------------
+What is the current algorithm used in Tor and why does it cause unfairness
+between cuircuts.
+
+What specific changes to Tor's scheduling algorithm and congestion control
+mechanisms will improve fairness.
+
+Findings
+--------
+The first modification to the scheduler was a switch to scheduling circuits
+instead of connections. Second, the researchers suggest a modified version of
+a min-max fairness algorithm be implemented. They provide a mathematical
+description of the algorithm to show how it can ensure greedy circuits do not
+over user their bandwidth allocation while also allowing a circuit to
+contribute their unused bandwidth to other circuits.
+
+Tor's sliding window (a mechanism that is very similar to TCP's sliding
+window) is too large and is end-to-end (end-to-end meaning there is one
+windows that spans the entire circuit and all connections that circuit
+travels). The researchers made separate windows exist between each router and
+reduced the maximum size of the window. A faster response to network
+congestion was observed under the new design.
+
+The researchers combined their new scheduler design with the modifications to the sliding window
+and observed major improvements to fairness and network latency in lab
+results.
+
+Recommendations
+---------------
+They recommend that their implementation be tested on the actual Tor
+network.
