@@ -1,10 +1,15 @@
 Vocabulary:
------------
+===========
 Over lay network
 Connection - A node to node connection is defined as a TCP/TLS connection between two nodes on the network.
 Circuit - A circuit exists on a connection. Multiple circuits can exists over a single connection.
 Cell - One 512K data unit in the Tor network.
 Socket Buffer - 
+Uptime -
+Bulk Transfer - 
+
+Background
+==========
 
 Primary Research Question
 -------------------------
@@ -137,6 +142,61 @@ Moore, W. Brad, Wacek, Chris, and Sherr, Micah. “Exploring the potential benef
 in Tor: slow and steady wins the race with Tortoise.” Proceedings of the 27th Annual Computer Security
 Applications Conference. ACSAC ’11. New York, NY, USA: ACM, 2011, 207–216.
 URL http://doi.acm.org/10.1145/2076732.2076762
+
+Primary Research Question
+-------------------------
+Will introducing a universal rate limit improve the performance of web traffic
+in Tor.
+
+Scope
+-----
+
+
+Secondary Research Questions
+----------------------------
+The idea of blocking all BitTorrent by using DPI was explored and rejected on
+because doing so would run contrary to Tor's purpose: to provide users with
+unfiltered access to the internet. Furthurmore, users could bypass DPI by
+disguising their traffic (by compression or encryption) to render DPI
+ineffective.
+
+The authors propose an incentive based strategy to encourage users to run
+their own relays. The first step would be to rate limit on all users at the
+ingress of the Tor network. Internal nodes in the network will not be filtered
+and it is theorized that this will motivate users who use high amounts of
+bandwidth to set up their own relay Onion Routers to bypass the universal rate
+limit. It is not intended that all users run relays, esspecially the users
+that are connecting from cuntries who's internet is filtered.
+
+Tortuise would require that a relay be listed as 'STABLE' and 'FAST' by the
+Tor directory service (these labels are only given to relays that have had
+table uptime for two weeks). This would prevent users from quickly setting up a
+temporary relay and easily bypassing the rate limit. The reliance on accurate
+directories is noted as a necissary deficiency.
+
+
+Findings
+--------
+Advanced users could circuimvent Tortoies.
+Tortoise may decrease trade anonymity for higher preformance because higher
+bandwidth connections can easily be identified as users who are preforming
+bulk transfer.
+
+By simulating a 1000 node Tor network that was running Torties, webclients
+only saw a %15 decrease in transfer speed while bulk transfer users
+experienced a %31 decrease in available bandwidth. This decrease in available
+bandwidth was considered to be enough to motivate high bandwidth users to run
+their own relays.
+
+Tortoies can cause and increase in CPU usage on an edge router because it has
+to apply the universal rate limit to all traffic that is sees. Tortoies is not
+compatible with Tor's bridge relays. It is also possible to launch an attack
+where a client achieves high bandwidth by spreading his connection over many
+Tor circuits. Tortoies has not been tried on the actual Tor network.
+
+
+Recommendations
+---------------
 
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 Tang, Can and Goldberg, Ian. “An improved algorithm for tor circuit scheduling.” Proceedings of the 17th
