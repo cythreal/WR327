@@ -4,87 +4,57 @@ Over lay network
 Connection - A node to node connection is defined as a TCP/TLS connection between two nodes on the network.
 Circuit - A circuit exists on a connection. Multiple circuits can exists over a single connection.
 Cell - One 512K data unit in the Tor network.
+Ingress - 
 Socket Buffer - 
 Uptime -
 Bulk Transfer - 
+Stock Tor - 
+Upstream - 
+Window - 
+RTT -
 
 Background
 ==========
-
-Primary Research Question
--------------------------
-
-Scope
------
-
-Secondary Research Questions
-----------------------------
-
-Findings
---------
-
-Recommendations
----------------
-
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-Bauer, Kevin, McCoy, Damon, Grunwald, Dirk, Kohno, Tadayoshi, and Sicker, Douglas. “Low-resource
-routing attacks against tor.” Proceedings of the 2007 ACM workshop on Privacy in electronic society. WPES
-’07. New York, NY, USA: ACM, 2007, 11–20.
-URL http://doi.acm.org/10.1145/1314333.1314336
-
-
+The majority of users experience delay when using Tor. Users that experience
+too much delay will choose not to use Tor which consequently will make Tor
+less effective tool. 
 
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 Chaabane, A., Manils, P., and Kaafar, M.A. “Digging into Anonymous Traffic: A Deep Analysis of the Tor
 Anonymizing Network.” Network and System Security (NSS), 2010 4th International Conference on. 2010,
 167 –174.
 
-Primary Research Question
--------------------------
-What applications are using the Tor network and what effect to those applications have on network
-performance?
-Scope
------
-The data was collected during two seperate experiments December 2009 and January 2010. The two
-data sets displayed similar trends. The data collected was in aggragated format meaning no user IP
-addresses were stored and the researchers were very careful not to break privacy laws or infringe on
-the privacy of the users. OpenDPI, an open source deep packet inspection too, was used to classify
-network traffic.
+Chaabane et al. investigated which applications were using the Tor network and
+what effect did those applications have on network performance?
 
-Secondary Research Questions
-----------------------------
-Which protocols use the most bandwidth and what type of content does a user interact with while
-using Tor?
+Data was collected twice, once during December 2009 and again in January 2010.
+The two data sets displayed similar trends and were in aggragated format to
+ensure no user IP addresses were stored. The researchers were very careful not
+to break privacy laws or infringe on the privacy of the users. OpenDPI, an
+open source deep packet inspection tool, was used to classify network traffic.
 
+Which protocols use the most bandwidth and what type of content does a user
+interact with while using Tor? There were two answers to this questions.
 
-Findings
---------
-Two main ares:
-## BitTorrent
-BitTorrent traffic was the top contributer to bandwidth usage
-the bandwidth used by BitTorrent is disproportionate to other protocols
-the use of non-encrypted protocols is minimal.
-Many users use Tor as an easy way to set up a SOCKS proxy, this does not comply with the Tor protocol
-One quarter recorded traffic was unidentifiable by DPI techniques. The researchers
-were able to confirm with certainty that this traffic was encrypted BitTorrent and reinforced the
-finding that majority of traffic consists of the BitTorrent protocol.
-Using torrent infohashes, copyrighted movies, games, and T.V. shows were shown to be the most
+First, BitTorrent traffic was disproportionally the top contributer to
+bandwidth usage. Reinforcing this, one quarter of the recorded traffic was
+unidentifiable by DPI techniques. The researchers were able to confirm with
+certainty that this traffic was encrypted BitTorrent. Using torrent infohashes
+it was determined that copyrighted movies, games, and T.V. shows were the most
 commonly torrented content type.
 
-## HTTP
-HTTP is responsible for most of the connections being made over the Tor network
-Popular content included (in order from most popular to least popular): Search Engine/Portals,
-Pornography, Computer/Internet, Social Networking, and Blogs/Web Communication.
+Second, HTTP is responsible for the majority of the connections being made
+over the Tor network. Popular content included (in order from most popular to
+least popular): Search Engine/Portals, Pornography, Computer/Internet, Social
+Networking, and Blogs/Web Communication.
 
-## Geopolitical data
-Seventy precent of clients that connected to the controlled entry nodes originated from only 10
-contries. The most common place of origin were the US and Germany and the proposed cause was that the high
-availability of internet and an increase in copyright law in those two countries caused the high.
+It was also found that many users use Tor as an easy way to set up a SOCKS
+proxy and that the use of non-encrypted protocols is minimal. Seventy precent
+of clients that connected to the controlled entry nodes originated from only
+10 contries.
 
-Recommendations
----------------
-The authors hope that the data that they collected would help later research identify and fix
-problems in Tor.
+The authors hope that the data that they collected would help later
+researchers identify and fix problems in Tor.
 
 
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -93,49 +63,38 @@ in the Tor Overlay.” Peer-to-Peer Computing (P2P), 2010 IEEE Tenth Internation
 
 Primary Research Question
 -------------------------
-What causes delay in Tor?
+Dhungel et al. focused on the causes of delay in the Tor network. They ran
+their experiments on the actual Tor network from August 2009 to March 2010.
+The researchers used 4 nodes, three of which they controlled, to isolate an
+Onion Router.  They broke the observed delay into two types: router delay,
+which is caused by queing and processing data cells, and latency, which is
+caused by delays in the connection median.
 
-Scope
------
-Observe routers in isolation and as sets of routers.
-Experiment went from August 2009 to March 2010.
-Used 4 nodes, three of which they controlled, to isolate an Onion Router.
-Used a chain of 4 nodes made of an onion proxy, entry router, exit router, and webserver controlled
-op, exit router, and webserver
-They broke the delay into two types: router delay, which is caused by queing and processing data
-cells, and latency, which is caused by delays in the connection median.
+The main question being investigated was whether router delay or latency
+was a larger issue for performance on the Tor network.
 
+Experiments were conducted in the actual Tor network and trends in collected
+data was consistent over multiple trials of the experiment. It was shown that
+when there is a delay of greater than one second it is probably caused by
+router delay. Different routers can cause varying delays, but the majority of
+routers introduced less than 100ms of delay.
 
-Secondary Research Questions
-----------------------------
-Does router delay or latency cause more delay in Tor.
+Experimental results showed fluctuation in router delay. The authors reason
+that either the Tor router selection algorithm is causing the fluctuations or
+the machine that is running the router is using bandwidth elsewhere to server
+other applications.
 
-Findings
---------
-Experimental data was easy to replicate and trends in collected data were consistent over multiple trials of.
+By isolating a router in a lab environment, it was discovered that most router
+delay was caused by a bottle neck in the TCP output socket write buffer. This
+deemed a common situation when the router was handling large amounts of
+traffic.
 
-It is normal for total delay caused by a router to not have any correlation with it's advertized bandwith.
+It was also shown that total delay caused by a router does not have any
+correlation with it's advertized bandwith.
 
-When there is a delay of greater than one second it is probably caused by router delay.
-Different routers can cause varying delays, but the majority of routers introduced less than 100ms
-of delay. 
+The paper concludes by recommending modification to Tor's path selection
+algorithm and cell scheduling algorithm.
 
-Experimental results showed fluctuation in router delay. The authors reason that either the Tor
-router selection algorithm is causing the fluctuations or the machine that is running the router is
-using bandwidth elsewhere to server other applications.
-
-By isolating a router in a lab environment, it was discovered that most router delay was caused by a
-bottle neck in the output socket write buffer. This is a common situation when the router is
-handling large amounts of traffic.
-
-Recommendations
----------------
-The paper concludes by recommending modification to Tor's path selection algorithm and cell scheduling algorithm.
-
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-Edman, Matthew and Syverson, Paul. “As-awareness in Tor path selection.” Proceedings of the 16th ACM
-conference on Computer and communications security. CCS ’09. New York, NY, USA: ACM, 2009, 380–389.
-URL http://doi.acm.org/10.1145/1653662.1653708
 
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 Moore, W. Brad, Wacek, Chris, and Sherr, Micah. “Exploring the potential benefits of expanded rate limiting
@@ -145,48 +104,39 @@ URL http://doi.acm.org/10.1145/2076732.2076762
 
 Primary Research Question
 -------------------------
-Will introducing a universal rate limit improve the performance of web traffic
-in Tor.
+Moor et al. propose introducing a universal rate limit to improve the
+performance of web traffic in Tor.
 
-Scope
------
-
-
-Secondary Research Questions
-----------------------------
 The idea of blocking all BitTorrent by using DPI was explored and rejected on
-because doing so would run contrary to Tor's purpose: to provide users with
-unfiltered access to the internet. Furthurmore, users could bypass DPI by
-disguising their traffic (by compression or encryption) to render DPI
+the grounds that doing so would run contrary to Tor's purpose: to provide
+users with unfiltered access to the internet. Furthurmore, users could bypass
+DPI by disguising their traffic (by compression or encryption) to render DPI
 ineffective.
 
-The authors propose an incentive based strategy to encourage users to run
-their own relays. The first step would be to rate limit on all users at the
-ingress of the Tor network. Internal nodes in the network will not be filtered
-and it is theorized that this will motivate users who use high amounts of
-bandwidth to set up their own relay Onion Routers to bypass the universal rate
-limit. It is not intended that all users run relays, esspecially the users
-that are connecting from cuntries who's internet is filtered.
-
-Tortuise would require that a relay be listed as 'STABLE' and 'FAST' by the
-Tor directory service (these labels are only given to relays that have had
-table uptime for two weeks). This would prevent users from quickly setting up a
-temporary relay and easily bypassing the rate limit. The reliance on accurate
-directories is noted as a necissary deficiency.
-
-
-Findings
---------
-Advanced users could circuimvent Tortoies.
-Tortoise may decrease trade anonymity for higher preformance because higher
-bandwidth connections can easily be identified as users who are preforming
-bulk transfer.
+The authors propose an incentive based strategy called Tortoise that would
+encourage users to run their own relays. Tortoise would impose a universal
+rate limit on all users at the ingress of the Tor network. Internal nodes in
+the network will not be filtered and it is theorized that this will motivate
+users who use high amounts of bandwidth to set up their own relay Onion
+Routers to bypass the universal rate limit. It is not intended that all users
+run relays, esspecially the users that are connecting from cuntries who's
+internet is filtered.
 
 By simulating a 1000 node Tor network that was running Torties, webclients
 only saw a %15 decrease in transfer speed while bulk transfer users
 experienced a %31 decrease in available bandwidth. This decrease in available
 bandwidth was considered to be enough to motivate high bandwidth users to run
-their own relays.
+their own relays, causing improvements to network performance.
+
+Tortoise would require that a relay be listed as 'STABLE' and 'FAST' by the
+Tor directory service (these labels are only given to relays that have had
+stable uptime for two weeks). This would prevent users from quickly setting up
+a temporary relay and easily bypassing the rate limit. The reliance on
+accurate directories is noted as a necissary deficiency. Also, advanced users
+could circuimvent Tortoies.  Tortoise may decrease trade anonymity for higher
+preformance because higher bandwidth connections can easily be identified as
+users who are preforming bulk transfer.
+
 
 Tortoies can cause and increase in CPU usage on an edge router because it has
 to apply the universal rate limit to all traffic that is sees. Tortoies is not
@@ -194,9 +144,6 @@ compatible with Tor's bridge relays. It is also possible to launch an attack
 where a client achieves high bandwidth by spreading his connection over many
 Tor circuits. Tortoies has not been tried on the actual Tor network.
 
-
-Recommendations
----------------
 
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 Tang, Can and Goldberg, Ian. “An improved algorithm for tor circuit scheduling.” Proceedings of the 17th
@@ -206,14 +153,9 @@ URL http://doi.acm.org/10.1145/1866307.1866345
 
 Primary Research Question
 -------------------------
-How can priority be given to circuits that contain latency sensitive traffic?
-
-Scope
------
-The majority of users experience delay when using Tor. Users that experience
-too much delay will choose not to use Tor which consequently will make Tor
-less effective tool. By prioritizing latency sensitive traffic like HTTP, the
-authors tried to make interactive content appear to load faster while not hurting
+Tang et al. aimed to give to circuits that contain latency sensitive traffic
+priority other circuits that contain bulk transfer protocols.  By prioritizing
+they hoped to make interactive content appear to load faster while not hurting
 the overall performance of bulk transfer protocols.
 
 EWMA (Estimated Weighted Moving Average), sometimes referred to as the "rolling
@@ -222,46 +164,37 @@ past and reflects recent trends in data set. TCP uses a similar weighted
 average when calculating RTT (Round Trip Times) when calibrating it's sliding
 window. EWMA was used to estimate how active a circuit was (cells per second).
 Circuits that were on average less active were given higher priority over
-circuits that had a higher cells-per-second count.
+circuits that had a higher cells-per-second average.
 
-Three experiments were conducted to test the effectiveness of using the EWMA
+Experiments were conducted to test the effectiveness of using a EWMA
 method. The first experiment consisted of isolating three Onion Routers and
 three clients and having the clients build circuits through the same
 connection. Two of the clients preformed bulk transfer over their circuit and
 the third client attempted to download a small 300KB file (similar to the size of
 webpage). Timing data was collected with the stock Tor and then all three ORs
 were enabled with EWMA and data was again collected. Results showed an
-preformance boost of 2.17 seconds when downloading the small file.
+performance boost of 2.17 seconds when downloading the small file.
 
-The second experiment was set up exactly like the first and explored whether
+A second experiment was set up exactly like the first and explored whether
 enabling EWMA on some routers and not others had any affect on performance.
 The results found that the effectivness of EWMA depends on severity of
 congestion within the network.
 
-The third experiment asked, where does a cell spends most of it's time being queued <-- TODO
+A third experiment asked, where does a cell spends most of it's time
 when traveling through an Onion Router? This experiment was run locally on a
 single router. Timing data was collected at three points: when a cell entered
-a circuit queue, when the cell moved from the circuit queue to the socket
-output buffer, and when the cell finially leaves the socket buffer. The result
+a circuit queue, when the cell moved from the circuit queue to the TCP socket
+output buffer, and when the cell finally left the TCP socket buffer. The results
 proved that a cell spends most of it's time waiting to be flushed out of the
-circuit queue into the socket buffer. When the EWMA algorithm was enabled the
-observed time a cell spent in the circuit buffer was dramatically reduced from
+circuit queue into the TCP socket buffer. When the EWMA algorithm was enabled the
+observed time a cell spent in the circuit queue was dramatically reduced from
 653 milliseconds to 115 milliseconds.
 
-Secondary Research Questions
-----------------------------
-
-
-Findings
---------
 The negative effect felt by bulk transfer protocols when the EWMA algorithm
 was enabled was neglagable. Also, overhead caused by the calculations required
 to cary out EWMA were also neglagable. It is fair to assume that enabling an
 EWMA algorithm to schedule Tor traffic improves the preformance of latency
 sensative protocols on the Tor network.
-
-Recommendations
----------------
 
 
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -270,20 +203,9 @@ Networks (LCN), 2011 IEEE 36th Conference on. 2011, 432 –440.
 
 Primary Research Question
 -------------------------
-What changes to Tor's scheduling algorithm can make fairness between cuircuts possible.
-
-
-Scope
------
-The goal of improvements is to improve the preformance of interactive
-protocols like HTTP.
-
-It is possible to adopt existing ideas and theories from other networks but
-they ideas and theories need to be modified to comply with Tor's overlay
-network topology. Replacing the concept of a link being an isolated
-connection between two nodes with Tor's concept of a link being a singe TCP
-connection possible sharing a single physical connection with other TCP
-sessions put existing theories into the correct context.
+Tschorsch et al. focused on what changes to Tor's scheduling algorithm could
+make fairness between cuircuts possible and consiquently improve preformance
+of interactive protocols like HTTP.
 
 The authors define 'fair' as being able to use resources freely when they are
 available but not over using them when a router is overloaded with traffic. As
@@ -291,12 +213,10 @@ an example, if two circuits exist on a connection and both are allocated 1/2
 of the bandwidth, one of the circuits may use more than half of the bandwidth
 while the other circuit is idle. But, if both circuits are saturated with
 traffic, no one circuit will use more than it's share of the bandwidth.
-The goal modifying the scheduling algorithm was to allow no circuit to
-over use it's bandwidth allocation while not imposing new
-communication overhead between between routers. The restriction of no new
-overhead required existing algorithms used in ATM networks to facilitate
-fairness to be invalid and in need of modification before being integrated into
-Tor.
+The goal of modifying the scheduling algorithm was to allow no circuit to
+over use it's bandwidth allocation while not imposing new communication
+overhead between between routers.
+
 
 Instead of scheduling traffic for individual circuits, Tor's current scheduler
 services connections in a round robin fashion. When a node is at it's
@@ -305,37 +225,52 @@ leaving a connection with two circuits getting the same bandwidth allocation
 as a connection containing one circuit; two circuits will get 1/4 of the
 bandwidth while the other gets 1/2, this is not fair.
 
-
-
-Secondary Research Questions
-----------------------------
-What is the current algorithm used in Tor and why does it cause unfairness
-between cuircuts.
-
-What specific changes to Tor's scheduling algorithm and congestion control
-mechanisms will improve fairness.
-
-Findings
---------
-The first modification to the scheduler was a switch to scheduling circuits
-instead of connections. Second, the researchers suggest a modified version of
-a min-max fairness algorithm be implemented. They provide a mathematical
-description of the algorithm to show how it can ensure greedy circuits do not
-over user their bandwidth allocation while also allowing a circuit to
-contribute their unused bandwidth to other circuits.
+The authors proposed two changes to the scheduler. The first change was to
+switch to scheduling circuits instead of connections. Second, the researchers
+suggest a modified version of a min-max fairness algorithm be implemented.
+This algorithm would ensure greedy circuits do not over use their
+bandwidth allocation while also allowing a circuit to contribute their
+unused bandwidth to other circuits.
 
 Tor's sliding window (a mechanism that is very similar to TCP's sliding
-window) is too large and is end-to-end (end-to-end meaning there is one
-windows that spans the entire circuit and all connections that circuit
-travels). The researchers made separate windows exist between each router and
-reduced the maximum size of the window. A faster response to network
-congestion was observed under the new design.
+window) is too large and is end-to-end (end-to-end meaning there is one window
+that spans the entire circuit and all connections that circuit travels). The
+researchers made separate windows exist between each router and reduced the
+maximum size of the window. A faster response to network congestion was
+observed under the new design.
 
-The researchers combined their new scheduler design with the modifications to the sliding window
-and observed major improvements to fairness and network latency in lab
-results.
+The researchers combined their new scheduler design with the modifications to
+the sliding window and observed major improvements to fairness and network
+latency in lab results.
 
-Recommendations
----------------
-They recommend that their implementation be tested on the actual Tor
-network.
+They recommend that their implementation be tested on the actual Tor network.
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+AlSabah, Mashael, Bauer, Kevin, Goldberg, Ian, Grunwald, Dirk, McCoy, Damon, Savage, Stefan, and
+Voelker, Geoffrey M. “DefenestraTor: throwing out windows in Tor.” Proceedings of the 11th international
+conference on Privacy enhancing technologies. PETS’11. Berlin, Heidelberg: Springer-Verlag, 2011, 134–154.
+URL http://dl.acm.org/citation.cfm?id=2032162.2032170
+
+AlSahah et al. wanted improve congestion by modifying Tor's window policy.
+
+A router running stock Tor has no way of notifying an upstream router that it
+is experiencing congestion. The authors propose using a strategy found in ATM
+networks caled N23. N23 would require modifying the logic on all routers that
+comprise Tor. N23 would cause overloaded routers to notify upstream routers
+that they were experiencing bandwidth overload. In N23 a hard upper bound is
+set on how many packets can be buffered at each router along a given circuit.
+
+Another approach would be to either reduce the static windows size, or make
+the windows size dynamic. This sulution is prefereable because only entry and
+exit routers would need to be modified.
+
+Testing was done in a simulated network. The data suggested that strategies
+that relay on modifying windows sizes improve webpage response times by up to
+%65 but leave large portions of bandwidth unused and actually harm average
+time it takes to download a webpage.
+
+N23 ensured a steady flow of packets from entry to edge router. Also, N23 was
+able to respond to congestion quickly, specifically one in RTT.
+
+The authors conclude their finding by recommending the adoption of N23 within
+the Tor network.
