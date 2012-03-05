@@ -1,23 +1,46 @@
 Vocabulary:
 ===========
-Over lay network
-Connection - A node to node connection is defined as a TCP/TLS connection between two nodes on the network.
-Circuit - A circuit exists on a connection. Multiple circuits can exists over a single connection.
-Cell - One 512K data unit in the Tor network.
-Ingress - 
-Socket Buffer - 
-Uptime -
-Bulk Transfer - 
-Stock Tor - 
-Upstream - 
-Window - 
-RTT -
+Tor is a popular Anonymity network. To use the network users setup an Onion
+Proxy (OP). Users then download a list of Onion Routers (OR) from a directory
+servers. The user selects, usually, three ORs to construct a circuit. Then, the user
+establishes an encrypted connection to the first OR through it's OP. The user
+then builds another connection to the second OR through the connection it
+build with the first OR. Using its OP and the first OR, the user then builds a
+similar connection between the second and third OR. The user can now use this
+circuit to use the internet anonamasly.
 
-Background
-==========
 The majority of users experience delay when using Tor. Users that experience
 too much delay will choose not to use Tor which consequently will make Tor
-less effective tool. 
+less effective tool.
+
+Connection - A node to node connection is defined as a TCP/TLS connection
+between two nodes on the network.
+
+Circuit - A circuit exists within a connection. Multiple circuits can exists over
+a single connection.
+
+Cell - One 512K data unit in the Tor network.
+
+Ingress - Refers to the entry point of a network.
+
+(TCP) Socket Buffer - A TCP connection has two sides. The TCP socket buffer is
+where packets are stored while they wait to be sent or wait to processed after
+being received.
+
+Uptime - The uninterrupted time period a computer has spent in a functional state.
+Any breaks (like turning off) causes the uptime to be reset.
+
+Bulk Transfer - Transferring large files using a protocol like BitTorrent, FTP,
+SFTP, etc...
+
+Stock Tor - The default version of Tor officially released by the Tor Project.
+
+Sliding Window - A sliding windows ensures that the sending side of a
+connection does not send too many packets without confirmation that at least
+some of the packets have been received. TCP uses a sliding window.
+
+RTT - The Round Trip Time is the length of time for a signal to be sent plus
+the amount of time it takes to receive confirmation of signal being received.
 
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 Chaabane, A., Manils, P., and Kaafar, M.A. “Digging into Anonymous Traffic: A Deep Analysis of the Tor
@@ -28,7 +51,7 @@ Chaabane et al. investigated which applications were using the Tor network and
 what effect did those applications have on network performance?
 
 Data was collected twice, once during December 2009 and again in January 2010.
-The two data sets displayed similar trends and were in aggragated format to
+The two data sets displayed similar trends and were in aggregate format to
 ensure no user IP addresses were stored. The researchers were very careful not
 to break privacy laws or infringe on the privacy of the users. OpenDPI, an
 open source deep packet inspection tool, was used to classify network traffic.
@@ -49,9 +72,9 @@ least popular): Search Engine/Portals, Pornography, Computer/Internet, Social
 Networking, and Blogs/Web Communication.
 
 It was also found that many users use Tor as an easy way to set up a SOCKS
-proxy and that the use of non-encrypted protocols is minimal. Seventy precent
+proxy and that the use of non-encrypted protocols is minimal. Seventy percent
 of clients that connected to the controlled entry nodes originated from only
-10 contries.
+10 countries.
 
 The authors hope that the data that they collected would help later
 researchers identify and fix problems in Tor.
@@ -67,7 +90,7 @@ Dhungel et al. focused on the causes of delay in the Tor network. They ran
 their experiments on the actual Tor network from August 2009 to March 2010.
 The researchers used 4 nodes, three of which they controlled, to isolate an
 Onion Router.  They broke the observed delay into two types: router delay,
-which is caused by queing and processing data cells, and latency, which is
+which is caused by queuing and processing data cells, and latency, which is
 caused by delays in the connection median.
 
 The main question being investigated was whether router delay or latency
@@ -90,7 +113,7 @@ deemed a common situation when the router was handling large amounts of
 traffic.
 
 It was also shown that total delay caused by a router does not have any
-correlation with it's advertized bandwith.
+correlation with it's advertised bandwidth.
 
 The paper concludes by recommending modification to Tor's path selection
 algorithm and cell scheduling algorithm.
@@ -109,7 +132,7 @@ performance of web traffic in Tor.
 
 The idea of blocking all BitTorrent by using DPI was explored and rejected on
 the grounds that doing so would run contrary to Tor's purpose: to provide
-users with unfiltered access to the internet. Furthurmore, users could bypass
+users with unfiltered access to the internet. Furthermore, users could bypass
 DPI by disguising their traffic (by compression or encryption) to render DPI
 ineffective.
 
@@ -119,7 +142,7 @@ rate limit on all users at the ingress of the Tor network. Internal nodes in
 the network will not be filtered and it is theorized that this will motivate
 users who use high amounts of bandwidth to set up their own relay Onion
 Routers to bypass the universal rate limit. It is not intended that all users
-run relays, esspecially the users that are connecting from cuntries who's
+run relays, especially the users that are connecting from countries who's
 internet is filtered.
 
 By simulating a 1000 node Tor network that was running Torties, webclients
@@ -132,9 +155,9 @@ Tortoise would require that a relay be listed as 'STABLE' and 'FAST' by the
 Tor directory service (these labels are only given to relays that have had
 stable uptime for two weeks). This would prevent users from quickly setting up
 a temporary relay and easily bypassing the rate limit. The reliance on
-accurate directories is noted as a necissary deficiency. Also, advanced users
-could circuimvent Tortoies.  Tortoise may decrease trade anonymity for higher
-preformance because higher bandwidth connections can easily be identified as
+accurate directories is noted as a necessary deficiency. Also, advanced users
+could circumvent Tortoies.  Tortoise may decrease trade anonymity for higher
+performance because higher bandwidth connections can easily be identified as
 users who are preforming bulk transfer.
 
 
@@ -177,7 +200,7 @@ performance boost of 2.17 seconds when downloading the small file.
 
 A second experiment was set up exactly like the first and explored whether
 enabling EWMA on some routers and not others had any affect on performance.
-The results found that the effectivness of EWMA depends on severity of
+The results found that the effectiveness of EWMA depends on severity of
 congestion within the network.
 
 A third experiment asked, where does a cell spends most of it's time
@@ -191,10 +214,10 @@ observed time a cell spent in the circuit queue was dramatically reduced from
 653 milliseconds to 115 milliseconds.
 
 The negative effect felt by bulk transfer protocols when the EWMA algorithm
-was enabled was neglagable. Also, overhead caused by the calculations required
-to cary out EWMA were also neglagable. It is fair to assume that enabling an
-EWMA algorithm to schedule Tor traffic improves the preformance of latency
-sensative protocols on the Tor network.
+was enabled was negligible. Also, overhead caused by the calculations required
+to carry out EWMA were also negligible. It is fair to assume that enabling an
+EWMA algorithm to schedule Tor traffic improves the performance of latency
+sensitive protocols on the Tor network.
 
 
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -204,7 +227,7 @@ Networks (LCN), 2011 IEEE 36th Conference on. 2011, 432 –440.
 Primary Research Question
 -------------------------
 Tschorsch et al. focused on what changes to Tor's scheduling algorithm could
-make fairness between cuircuts possible and consiquently improve preformance
+make fairness between circuits possible and consequently improve performance
 of interactive protocols like HTTP.
 
 The authors define 'fair' as being able to use resources freely when they are
@@ -255,13 +278,13 @@ AlSahah et al. wanted improve congestion by modifying Tor's window policy.
 
 A router running stock Tor has no way of notifying an upstream router that it
 is experiencing congestion. The authors propose using a strategy found in ATM
-networks caled N23. N23 would require modifying the logic on all routers that
+networks called N23. N23 would require modifying the logic on all routers that
 comprise Tor. N23 would cause overloaded routers to notify upstream routers
 that they were experiencing bandwidth overload. In N23 a hard upper bound is
 set on how many packets can be buffered at each router along a given circuit.
 
 Another approach would be to either reduce the static windows size, or make
-the windows size dynamic. This sulution is prefereable because only entry and
+the windows size dynamic. This solution is preferable only entry and
 exit routers would need to be modified.
 
 Testing was done in a simulated network. The data suggested that strategies
