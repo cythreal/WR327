@@ -1,0 +1,74 @@
+Presentation
+============
+##Tor is an overlay network used to access the Internet anonymously.
+* Also, Circumvent firewalls
+* As the network has become more popular more delay has been felt by users. Especially when viewing interactive content like Websites.
+
+I am interested in _how network congestion is being address in the Tor network._
+
+## A sampling of the articles in my literature review explore:
+* What is causing congestion.
+* How Tor is currently trying to handle congestion.
+* Proposed solutions to congestion.
+
+##What is causing congestion?
+* This was the topic of Dhungel, P., Steiner, M., Rimac, I., Hilt, V., and Ross, K.W. "Waiting for Anonymity: Understanding Delays in the Tor Overlay."
+* Confrence on Peer-to-Peer Computing.
+* They found that:
+    * It was router delay, caused by a bottle neck in the TCP output socket buffer.
+        * This was a common occurence when the router was handling large amounts of traffic.
+        * Cause by BitTorrent in most cases.
+* Recommend that scheduler be modified.
+
+##How does Tor currently try to handle congestion and why it doesn't work so well (includes a possible solution.)
+* This was the topic of Tschorsch, Florian and Scheuermann, Bjorn. "Tor is unfair: And what to do about it."
+
+They found that:
+
+* Tor schedules connections! This is 'un-fair'!
+* It's unfair because:
+    * Three circuits, 2 connection.
+    * Under heavy traffic load, both connections get 50% of bandwidth.
+    * That leaves one circuit with 1/2 of the bandwidth, the other two get 1/4
+* Solution: Schedule circuits (Pretty simple right?)
+
+##How to schedule circuits.
+* Was discussed in Tang, Can and Goldberg, Ian. "An improved algorithm for tor circuit scheduling."
+* Conference on Computer and communications security
+* EWMA (Estimated Weighted Moving Average), sometimes referred to as the "rolling average," is an algorithm to remove the statistical influence of data collected in the past and reflect recent trends in data.
+* Circuits that are bursty are likely to be interactive content.
+    * Download a webpage, wait a few seconds, download another.
+    * This is bursty.
+    * As an opposite, BitTorrent is always downloading and uploading.
+    * Constant stream.
+* Use EWMA to figure out which circuits are active a lot and give priority to burst circuits.
+
+## Another interesting solution
+* Discussed in AlSabah, Mashael, Bauer, Kevin, Goldberg, Ian, Grunwald, Dirk, McCoy, Damon, Savage, Stefan, and Voelker, Geoffrey M. "DefenestraTor: throwing out windows in Tor."
+    * conference on Privacy enhancing technologies
+* Changing window size.
+    * Tried to Keep is static
+    * Tried to make make it dynamic.
+
+Also
+
+* Applied ideas found in ATM (Automated teller machines) networks.
+* N23: N2 + N3 
+    * N2 = Fluctuation
+    * N3 = Hard upper limit
+* Tested in simulated network.
+    * Window size modification: 65% but leaves large portions of bandwidth unused.
+    * N23 modification: respond to congestion quickly, specifically in one RTT (Round Trip Time).
+
+Conclusion
+==========
+
+If I did write a literature some things it would have focused on would be:
+------------------------------
+
+* Delay is caused by overburdened routers.
+
+* The data says we need to fix the scheduler.
+
+* Scheduling circuits instead of connections.
+
